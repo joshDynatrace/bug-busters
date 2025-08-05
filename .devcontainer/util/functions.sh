@@ -720,6 +720,27 @@ exposeTodoApp(){
   nohup kubectl port-forward service/todoapp 8080:8080  -n todoapp --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
 }
 
+deployBugZapperApp(){
+  printInfoSection "Deploying BugZapper App"
+
+  kubectl create ns bugzapper
+
+  # Create deployment of todoApp
+  kubectl -n bugzapper create deploy bugzapper --image=jhendrick/asteroids-game:latest
+
+  # Expose deployment of todoApp with a Service
+  kubectl -n bugzapper expose deployment bugzapper --type=NodePort --name=bugzapper --port=3001 --target-port=3001
+
+  # Define the NodePort to expose the app from the Cluster
+  kubectl patch service bugzapper --namespace=bugzapper --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30200}]'
+
+  printInfoSection "Bugzapper is available via NodePort=30200"
+}
+
+exposeTodoApp(){
+  printInfo "Exposing BugZapper App in your dev.container"
+  nohup kubectl port-forward service/bugzapper 3001:3001  -n bugzapper --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
+}
 
 _exposeAstroshop(){
   printInfo "Exposing Astroshop in your dev.container"
