@@ -729,7 +729,7 @@ deployBugZapperApp(){
   kubectl -n bugzapper create deploy bugzapper --image=jhendrick/asteroids-game:latest
 
   # Expose deployment of todoApp with a Service
-  kubectl -n bugzapper expose deployment bugzapper --type=NodePort --name=bugzapper --port=3001 --target-port=3001
+  kubectl -n bugzapper expose deployment bugzapper --type=NodePort --name=bugzapper --port=3000 --target-port=3000
 
   # Define the NodePort to expose the app from the Cluster
   kubectl patch service bugzapper --namespace=bugzapper --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30200}]'
@@ -739,7 +739,7 @@ deployBugZapperApp(){
 
 exposeBugZapperApp(){
   printInfo "Exposing BugZapper App in your dev.container"
-  nohup kubectl port-forward service/bugzapper 3001:3001  -n bugzapper --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
+  nohup kubectl port-forward service/bugzapper 3000:3000  -n bugzapper --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
 }
 
 _exposeAstroshop(){
