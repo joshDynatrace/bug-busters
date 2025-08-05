@@ -737,7 +737,7 @@ deployBugZapperApp(){
   printInfoSection "Bugzapper is available via NodePort=30200"
 }
 
-exposeTodoApp(){
+exposeBugZapperApp(){
   printInfo "Exposing BugZapper App in your dev.container"
   nohup kubectl port-forward service/bugzapper 3001:3001  -n bugzapper --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
 }
