@@ -2,8 +2,8 @@
 
 Your mission in this bug finding expedition is to find bugs in the following two applications which are setup to run inside a local Kind Kubernetes cluster:
 
-- To-Do App
-- BugZapper Asteroids Style Game
+- To-Do App (Java application)
+- BugZapper Asteroids Style Game (Node.js application)
 
 As part of the journey, you'll utilize Dynatraces Live Debugger and other capabilities to find where the bugs are occuring in the codebase.
 
