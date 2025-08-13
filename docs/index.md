@@ -1,28 +1,33 @@
 --8<-- "snippets/index.js"
-
 --8<-- "snippets/disclaimer.md"
 
-## What's this tutorial all about
-In this tutorial we'll learn:
+## Dynatrace Bug Buster Bug Finding Expedition
 
-- how this codespace is being built
-- how is the separation of concerns of the architecture in this devcontainer
-- the functions.sh file
-- create Github documentation and publish it
-- How MKDocs work
-- monitor the Github documentation
-- monitor the instatiation of codespaces (learn about the usage of a specific enablement)
-- exposing ports
-- tipp & tricks
-- troubleshooting
+## What's this bug finding tutorial all about
+In this bug finding tutorial it's your job (with a few hints) to find bugs in two applications:
+
+- BugZappers - an asteroids style game
+- Todo App - a todo app for keeping track of todo tasks
+
+As part of the tasks you will utilize Dynatraces new Live Debugger.
+
+The Live Debugger is a solution within the package of [Observability for Developers](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability){target=_blank} of the Dynatrace Platform which provides developers with instant access to code-level debug data needed to troubleshoot and understand complex, modern applications with no extra coding, redeployments, or restarts.
 
 <p align="center">
-  <img src="img/dt_professors.png" alt="Professors" width="200">
+  <img src="img/bug-busters.jpg" alt="Bugbusters" width="400">
 </p>
 
 
-!!! tip "What will we do"
-    In this tutorial we will learn how easy it is to create an enablement using codespaces and a Kubernetes cluster!
+Are you ready to start the Bug hunting journey?
 
 <div class="grid cards" markdown>
-- [Yes! let's begin :octicons-arrow-right-24:](2-getting-started.md)
+- [Yes! let's begin :octicons-arrow-right-24:](1-bugzappers-bugs.md)
+</div>
+
+<br>
+
+If you need assistance setting up the Dynatrace tenant to run this bug finding exercise with click here (admins only):
+
+<div class="grid cards" markdown>
+- [Help me setup my tenant :octicons-arrow-right-24:](getting-started.md)
+</div>

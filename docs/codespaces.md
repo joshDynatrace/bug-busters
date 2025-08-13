@@ -3,7 +3,7 @@
 
 ## 1. Launch Codespace
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-wwse/enablement-live-debugger-bug-hunting){target="_blank"}
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/joshDynatrace/bug-busters){target="_blank"}
 
 
 ## 1.1 Codespaces configuration
@@ -85,5 +85,5 @@ exposeTodoApp(){
 }
 ```
 <div class="grid cards" markdown>
-- [Let's start our Bug hunting quest:octicons-arrow-right-24:](1-bug-clear-completed.md)
+- [Back to the main page:octicons-arrow-right-24:](index.md)
 </div>
