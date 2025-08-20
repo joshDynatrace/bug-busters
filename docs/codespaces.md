@@ -85,5 +85,5 @@ exposeTodoApp(){
 }
 ```
 <div class="grid cards" markdown>
-- [Back to the main page:octicons-arrow-right-24:](index.md)
+- [Let's Find Some Bugs:octicons-arrow-right-24:](1-bugzappers-bugs.md)
 </div>
