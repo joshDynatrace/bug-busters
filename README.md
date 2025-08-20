@@ -21,4 +21,5 @@ Dynatrace's Observability for Developers allows you to:
 If you're ready to get started finding some bugs, click the link below to move forward...
 
 Let's Get Started...
-## Coming Soon
+
+## [🧳🐞 Start the bug finding adventure here!](https://joshdynatrace.github.io/bug-busters/)
