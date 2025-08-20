@@ -5,25 +5,21 @@ There are a few bugs in the Bugzapper app and your mission is to find them by in
 
 To start, play a game to make sure there are some top scores on the scoreboard:
 
-<p align="center">
-  <img src="img/bugzapper-start.png" alt="Bugbusters" width="500">
-</p>
+![Bug Zapper](img/bugzapper-start.png)
 
 **Hints**
 
 - Try to clear the scores from the Top Scores. What do you notice?
 - Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the `asteroids-game` service.
-<p align="center">
-<img src="img/bugzapper-service.png" alt="Bugbusters" height="400">
-</p>
+
+![Bug Service](img/bugzapper-service.png)
+
 - Use the Live Debugger to set a breakpoint in the part of the code that is responsible for clearing the scores. When setting your Live Debugger filter use the `bugzapper` namespace.
 
 ## Bug 2: View Past Game Stats
 Now that you've played a game, you can view your game stats by clicking on the `View Game Stats` button.
 
-<p align="center">
-<img src="img/bugzapper-game-stats.png" alt="Bugbusters" height="400">
-</p>
+![Bug Zapper Stats](img/bugzapper-game-stats.png)
 
 Now click on `Past Game Stats` to view the past game stats. What do you notice?
 
