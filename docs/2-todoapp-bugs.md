@@ -1,79 +1,43 @@
 --8<-- "snippets/3-codespaces.js"
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-wwse/enablement-live-debugger-bug-hunting){target="_blank"}
+## Bug 1: Todo App - Clear Completed
 
-TODO: Sizing & secrets you need
-## 1.1 Codespaces configuration
-!!! tip "Branch, Machine sizing & secrets"
-    - Branch
-        - select the **main** branch
-    - Machine sizing
-        - As a machine type select **2-core**
-    - Secrets (enter your credentials within the following variables)
-        - DT_TENANT
-        - DT_OPERATOR_TOKEN
-        - DT_INGEST_TOKEN
+Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the Todo App. There are a few bugs in the app that we'll need to investigate.
 
+- Open the Todo app
+- Add a few tasks
+- Complete some of them by clicking to the left of the task
+- Clear the completed tasks
 
-## 2. While the Codespace is set-up for you, learn powerful usecases with Dynatrace
-We know your time is very valuable. This codespace takes around 6 minutes to be fully operational. A local Kubernetes ([kind](https://kind.sigs.k8s.io/){target="_blank"}) cluster monitored by Dynatrace will be configured and in it a sample application, the TODO app will be deployed. To make your experience best, we are also installing and configuring tools like:
+What happens?
 
-**k9s kubectl helm node jq python3 gh**
+<p align="center">
+  <img src="img/todo_completed.png" alt="Bugbusters" width="500">
+</p>
 
-![Codespaces installing](img/codespaces_installing.png)
+***Hints***
 
-## 3. Explore what has been deployed
-
-Your Codespace has now deployed the following resources:
-
-- A local Kubernetes ([kind](https://kind.sigs.k8s.io/){target="_blank"}) cluster monitored by Dynatrace, with some pre-deployed apps
-  that will be used later in the demo.
-
-- After a couple of minutes, you'll see this screen in your codespaces terminal. It contains the links to the local expose labguide and the UI of the application which we will be doing our Hands-On training.
-![Codespaces finish](img/codespaces_finish.png)
+- Open up the distributed traces app to make sure API calls work as expected and understand which calls were made to the backend
+- Open the Live Debugger to set a breakpoint in the the function called when you clear Todos. Use the namespace `todoapp` as your Live Debugger filter.
+- Why are the Todo tasks not getting cleared after looking at the code?
 
 
-## 4. Tips & Tricks
+## Bug 2: Todo App - Clear Completed
 
-We want to boost your learning and try to make your DEV experience as smooth as possible with Dynatrace trainings. Your Codespaces have a couple of convenience features added. 
+Let's add a todo task with some special characters such as exclamation points.
 
-### Show the greeting
-In the terminal, there are functions loaded for your convenience. By creating a new Terminal the Greeting will be shown that includes the links to the exposed apps, the Github  pages, the Github Repository, the Dynatrace Tenant that is bound to this devcontainer and some of the tools installed.
+What do you notice? Where is the bug?
 
-You can create a new Terminal directly in VSCode, type `zsh` or call the function `printGreeting` and that will print the greeting with the most relevant information.
+<p align="center">
+  <img src="img/todo_app_exclamation.png" alt="Bugbusters" width="500">
+</p>
 
-### Navigating in your local Kubernetes
-The client `kubectl` and `k9s`are configured so you can navigate in your local Kubernetes like butter. 
-![k9s](img/k9s.png)
+***Hints***
 
-### Exposing the apps to the public
-The apps MKdocs and TODO app are being exposed in the devcontainer to your localhost. If you want to make the endpoints public accesible, just go to the ports section in VsCode, right click on them and change the visibility to public.
-
-
-## 5. Troubleshooting
-
-
-### Exposing the App
-
-The todoApp is already exposed via NodePort in the port 30100, if you want to expose it in another port like the one defined 8080 in the service, then type and to expose the TODO app, type `exposeTodoApp`, 
-
-```bash
-exposeTodoApp(){
-  printInfo "Exposing Todo App in your dev.container"
-  nohup kubectl port-forward service/todoapp 8080:8080  -n todoapp --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-```
-
-### Showing open ports in the container
-There is a helper function loaded in the shell to see the open ports in the dev.container.
-
-```bash
-showOpenPorts(){
-  sudo netstat -tulnp
-}
-```
-
+- Use the distributed tracing app to filter traces based on the app name, kubernetes namespace, or workload names to see which services are being called
+- Use the Live Debugger to set a breakpoint in the part of the code you found to analyze the data.
+- What's happening to the todotitle as it gets added to our list of todos?
 
 <div class="grid cards" markdown>
-- [Let's start our enablement:octicons-arrow-right-24:](4-content.md)
+- [Cleanup:octicons-arrow-right-24:](cleanup.md)
 </div>

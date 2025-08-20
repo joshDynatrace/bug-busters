@@ -6,9 +6,9 @@ nav:
   - '1. About': index.md
   - '2. Getting started': getting-started.md
   - '3. Codespaces': codespaces.md  
-  - '2. Bugzappers': 1-bugzappers-bugs.md
-  - '3. To-do App': 2-todoapp-bugs.md
-  - '4. Cleanup': cleanup.md
+  - '4. Bugzappers': 1-bugzappers-bugs.md
+  - '5. To-do App': 2-todoapp-bugs.md
+  - '6. Cleanup': cleanup.md
 theme:
   name: material
   custom_dir: docs/overrides
