@@ -11,9 +11,7 @@ Now that you're an expert bug finder from finding bugs in the Bugzapper game, le
 
 What happens?
 
-<p align="center">
-  <img src="img/todo_completed.png" alt="Bugbusters" width="500">
-</p>
+![Todo App](img/todo_completed.png)
 
 ***Hints***
 
@@ -28,9 +26,7 @@ Let's add a todo task with some special characters such as exclamation points.
 
 What do you notice? Where is the bug?
 
-<p align="center">
-  <img src="img/todo_app_exclamation.png" alt="Bugbusters" width="500">
-</p>
+![Todo App](img/todo_app_exclamation.png)
 
 ***Hints***
 
