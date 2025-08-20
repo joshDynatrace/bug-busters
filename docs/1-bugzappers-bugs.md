@@ -23,6 +23,8 @@ Now that you've played a game, you can view your game stats by clicking on the `
 
 Now click on `Past Game Stats` to view the past game stats. What do you notice?
 
+***Hints***
+
 - Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the `asteroids-game` service.
 - Go to the Asteroids Game service in the `Services` app and check out the Logs. Notice there are some failures.
 - Based on the error logs, use the Live Debugger to set a breakpoint in the part of the code that is responsible for storing the game stats when a game ends.
