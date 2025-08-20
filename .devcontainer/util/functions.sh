@@ -726,7 +726,7 @@ deployBugZapperApp(){
   kubectl create ns bugzapper
 
   # Create deployment of todoApp
-  kubectl -n bugzapper create deploy bugzapper --image=jhendrick/asteroids-game:latest
+  kubectl -n bugzapper create deploy bugzapper --image=jhendrick/bugzapper-game:latest
 
   # Expose deployment of todoApp with a Service
   kubectl -n bugzapper expose deployment bugzapper --type=NodePort --name=bugzapper --port=3000 --target-port=3000
