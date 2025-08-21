@@ -41,9 +41,9 @@
 		"30100": { "label": "Application Web UI" },
 		"30200": { "label": "Bugzapper App" }
 	},
-  // minimal CPU when running DT components and apps.
+  // DT components don't start successfully with 2 cores, bumping to 4
 	"hostRequirements": {
-		"cpus": 2
+		"cpus": 4
 	}
   /*
   // Add recommended secrets 
