@@ -1,10 +1,10 @@
 #!/bin/bash
+##############################################################
+##  In here you add whatever action should happen after the container ha been created
+##  such as exposing the application.
+##############################################################
+#Load the functions into the shell
+source .devcontainer/util/source_framework.sh
 
-#load the functions into the shell
-source /workspaces/$RepositoryName/.devcontainer/util/functions.sh
-
-#This is for professors
-#exposeMkdocs
-exposeBugZapperApp
 
 printInfoSection "Your dev.container finished starting up"
