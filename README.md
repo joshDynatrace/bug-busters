@@ -33,4 +33,4 @@ If you're ready to get started finding some bugs, click the link below to move f
 
 Let's Get Started...
 
-## [🧳🐞 Start the bug finding adventure here!](https://joshdynatrace.github.io/bug-busters/)
+## [🧳🐞 Start the bug finding adventure here!](https://sergiohinojosa.github.io/bug-busters/
