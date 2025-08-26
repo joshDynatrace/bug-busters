@@ -509,16 +509,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <h2 id="bug-1-play-and-game-and-clear-the-scores">Bug 1: Play and Game and Clear the Scores<a class="headerlink" href="#bug-1-play-and-game-and-clear-the-scores" title="Permanent link">#</a></h2>
 <p>There are a few bugs in the Bugzapper app and your mission is to find them by investaging the application and using Dynatrace to help your investigation.</p>
+<p>Open the bugzappers game in your browser (if its not open, go to the codespaces 'Ports' tab and open the app on port 30200 in your browser)</p>
 <p>To start, play a game to make sure there are some top scores on the scoreboard:</p>
 <p><img alt="Bug Zapper" src="../img/bugzapper-start.png" /></p>
 <p><strong>Hints</strong></p>
 <ul>
 <li>Try to clear the scores from the Top Scores. What do you notice?</li>
-<li>Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the <code>asteroids-game</code> service.</li>
+<li>Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the <code>asteroids-game</code> service. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app.</li>
 </ul>
 <p><img alt="Bug Service" src="../img/bugzapper-service.png" /></p>
 <ul>
-<li>Use the Live Debugger to set a breakpoint in the part of the code that is responsible for clearing the scores. When setting your Live Debugger filter use the <code>bugzapper</code> namespace.</li>
+<li>Use the Live Debugger to set a breakpoint in the part of the code that's responsible for clearing the scores. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the <code>bugzapper</code> namespace as the filter. The source code repository should populate automatically. </li>
 </ul>
 <h2 id="bug-2-view-past-game-stats">Bug 2: View Past Game Stats<a class="headerlink" href="#bug-2-view-past-game-stats" title="Permanent link">#</a></h2>
 <p>Now that you've played a game, you can view your game stats by clicking on the <code>View Game Stats</code> button.</p>
