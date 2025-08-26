@@ -15,8 +15,8 @@ What happens?
 
 ***Hints***
 
-- Open up the distributed traces app to make sure API calls work as expected and understand which calls were made to the backend
-- Open the Live Debugger to set a breakpoint in the the function called when you clear Todos. Use the namespace `todoapp` as your Live Debugger filter.
+- Open up the distributed traces app to make sure API calls work as expected and understand which calls were made to the backend. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app.
+- Open the Live Debugger to set a breakpoint in the the function called when you clear Todos. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the namespace `todoapp` as your Live Debugger filter.
 - Why are the Todo tasks not getting cleared after looking at the code?
 
 
@@ -30,8 +30,8 @@ What do you notice? Where is the bug?
 
 ***Hints***
 
-- Use the distributed tracing app to filter traces based on the app name, kubernetes namespace, or workload names to see which services are being called
-- Use the Live Debugger to set a breakpoint in the part of the code you found to analyze the data.
+- Use the distributed tracing app to filter traces based on the app name, kubernetes namespace, or workload names to see which services are being called. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app.
+- Use the Live Debugger to set a breakpoint in the part of the code you found to analyze the data. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the namespace `todoapp` as your Live Debugger filter.
 - What's happening to the todotitle as it gets added to our list of todos?
 
 <div class="grid cards" markdown>
