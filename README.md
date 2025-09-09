@@ -31,7 +31,7 @@ Dynatrace's Observability for Developers allows you to:
 
 If you're ready to get started finding some bugs, click the link below to move forward...
 
-To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here]([https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=865083078&skip_quickstart=true](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)).
+To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
 
 Let's Get Started...
 
