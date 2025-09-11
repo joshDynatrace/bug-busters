@@ -1,7 +1,7 @@
 --8<-- "snippets/bugzappers-bugs.js"
 
 ## Bug 1: Play and Game and Clear the Scores
-There are a few bugs in the Bugzapper app and your mission is to find them by investaging the application and using Dynatrace to help your investigation.
+There are a few bugs in the Bugzapper app and your mission is to find them by investigating the application and using Dynatrace to help your investigation.
 
 Open the bugzappers game in your browser (if its not open, go to the codespaces 'Ports' tab and open the app on port 30200 in your browser)
 

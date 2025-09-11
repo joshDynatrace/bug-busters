@@ -2,12 +2,16 @@
 --8<-- "snippets/grail-requirements.md"
 
 ## 1. Dynatrace Tenant Setup
-You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Monitoring' rate card should be associated with it. In addition the application needs to be monitored with Dynatrace FullStack mode. The application runtime: Java, NodeJS.
+You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Monitoring' rate card should be associated with it. To validate go to Account Management > Subscription > Overview in your tenant. Code monitoring should be listed in the capability table.
+
+In addition the application needs to be monitored with Dynatrace FullStack mode. This is done for you in this example.
+
+The Live Debugger currently supports application runtimes: Java, NodeJS. 
 
 ### 1.1 Enable Observability for Developers
 
 - Go to Settings > General monitoring settings > OneAgent features.
-     - Enable the Java Live-Debugger, Node.js Live-Debugger, or both, depending on your needs.
+     - Enable the Java Live-Debugger and Node.js Live-Debugger
 - Go to Settings > Observability for Developers > Enable Observability for Developers
 
 [More information can be found here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/do-enable)
@@ -17,7 +21,7 @@ You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Mon
 We take security very seriously. So let's create a policy to set user-level Live Debugging breakpoints. 
 
 We need two policies for your user to be able to set breakpoints and to read snapshots. 
-For this we go to **Account Management > Identity & Access management > + Policy**
+For this we go to **Account Management > Identity & Access management > Policy Management > Create Policy **
 
 Set breakpoints
 ```bash
@@ -41,8 +45,13 @@ The policy should look something like this:
 [More info here about the IAM Policies here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup)
 Then we bind it to a user group. In this case since we are admins, let's bind the policy to the Admin group. Notice that the created policy is for an Admin and also for a Developer. Since we allow to `read` and `set` breakpoints but also to `manage` breakpoints [which is explained here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/additional-settings#manage-breakpoints).
 
-Go to **Group Management > Select Admin Group > + Permission**  (and bind the policy)
-![Bind Group](img/bind_group.png)
+Go to **Identify & Access Management > Group Management > Create Group**
+
+Name the Group 'Live Debugger User' and click **Create**.
+
+In the Live Debugger group click **+ Permission** and add the Policy we just created.
+
+Finally ensure your user is part of the Live Debugger User group. Go to **Identity & Access Management > User Management** and find your user. Click on the three dots to the right and select **Edit User**. Ensure the group for 'Live Debugger User' is selected and Save.
 
 Like this you have the fine control to give your developers, SRE teams and whoever you want to set breakpoints and read the snapshots. For more granular access [please continue reading here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup) 
 
@@ -65,16 +74,12 @@ This is already set up for you in the codespaces automatically in the [Dynakube.
 
 You have (2) options:
 
-- Enable built-in log ingest rule to ingest all logs discovered by Dynatrace
 - Configure log ingest rule to ingest relevant logs for this lab
+- Enable built-in log ingest rule to ingest all logs discovered by Dynatrace (**Be careful with this in practice**)
 
 In your Dynatrace tenant, open the `Settings` App.  Navigate in the menus to `Collect and capture` > `Log monitoring` > `Log ingest rules`.  This will open the `Settings Classic` App and show you the **Log ingest rules**
 
 ![Settings Log Ingest Rules](img/settings_log_ingest_rules.png)
-
-**Ingest all logs**
-
-Locate the rule `[Built-in] Ingest all logs` and enable it.  Click `Save changes`.
 
 **Ingest relevant logs**
 
@@ -99,13 +104,17 @@ Kubernetes namespace name = todoapp
 
 Click on `Save changes`.
 
+**Ingest all logs**
+
+Locate the rule `[Built-in] Ingest all logs` and enable it.  Click `Save changes`.
+
 ## 2. Create Dynatrace API Tokens for Kubernetes Observability
 This codespace has everything automated for you so you can focus on what matters which in this enablement is to learn about the Live Debugging capabilities of the Dynatrace Platform.  You'll need two tokens:
 
 1. Operator Token
 2. Ingest Token 
 
-We will get this two very easy from the Kubernetes App. 
+We will get these two from the Kubernetes App. 
 
 ### 2.1. Get the Operator Token and the Ingest Token from the Kubernetes App
 
@@ -121,7 +130,7 @@ We will get this two very easy from the Kubernetes App.
 
 
 !!! tip "Let's launch the Codespace"
-    Now we are ready to launch the Codespace! You'll need your tenant and the two tokens previuosly gathered from above. When you enter the tenant please enter it without the 'apps' part, for production tenants eg. abc123 for live -> https://abc123.live.dynatrace.com and for sprint -> https://abc123.sprint.dynatracelabs.com no apps in the URL.
+    Now we are ready to launch the Codespace! You'll need your tenant and the two tokens previuosly gathered from above. When you enter the tenant please enter it without the 'apps' part, for production tenants eg. abc12345 for live -> https://abc12345.live.dynatrace.com and for sprint -> https://abc12345.sprint.dynatracelabs.com no apps in the URL.
 
 
 <div class="grid cards" markdown>

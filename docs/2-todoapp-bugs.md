@@ -20,7 +20,7 @@ What happens?
 - Why are the Todo tasks not getting cleared after looking at the code?
 
 
-## Bug 2: Todo App - Clear Completed
+## Bug 2: Todo App - Special Characters
 
 Let's add a todo task with some special characters such as exclamation points.
 

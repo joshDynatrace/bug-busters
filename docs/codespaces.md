@@ -77,13 +77,6 @@ showOpenPorts(){
 }
 ```
 
-The todoApp is already exposed via NodePort in the port 30100, if you want to expose it in another port like the one defined 8080 in the service, then type and to expose the TODO app, type `exposeTodoApp`, 
-```bash
-exposeTodoApp(){
-  printInfo "Exposing Todo App in your dev.container"
-  nohup kubectl port-forward service/todoapp 8080:8080  -n todoapp --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-```
 <div class="grid cards" markdown>
 - [Let's Find Some Bugs:octicons-arrow-right-24:](1-bugzappers-bugs.md)
 </div>
