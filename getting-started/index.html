@@ -623,11 +623,13 @@
 </ul>
 </div>
 <h2 id="1-dynatrace-tenant-setup">1. Dynatrace Tenant Setup<a class="headerlink" href="#1-dynatrace-tenant-setup" title="Permanent link">#</a></h2>
-<p>You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Monitoring' rate card should be associated with it. In addition the application needs to be monitored with Dynatrace FullStack mode. The application runtime: Java, NodeJS.</p>
+<p>You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Monitoring' rate card should be associated with it. To validate go to Account Management &gt; Subscription &gt; Overview in your tenant. Code monitoring should be listed in the capability table.</p>
+<p>In addition the application needs to be monitored with Dynatrace FullStack mode. This is done for you in this example.</p>
+<p>The Live Debugger currently supports application runtimes: Java, NodeJS. </p>
 <h3 id="11-enable-observability-for-developers">1.1 Enable Observability for Developers<a class="headerlink" href="#11-enable-observability-for-developers" title="Permanent link">#</a></h3>
 <ul>
 <li>Go to Settings &gt; General monitoring settings &gt; OneAgent features.<ul>
-<li>Enable the Java Live-Debugger, Node.js Live-Debugger, or both, depending on your needs.</li>
+<li>Enable the Java Live-Debugger and Node.js Live-Debugger</li>
 </ul>
 </li>
 <li>Go to Settings &gt; Observability for Developers &gt; Enable Observability for Developers</li>
