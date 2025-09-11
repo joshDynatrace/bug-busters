@@ -638,7 +638,7 @@
 <h3 id="12-set-iam-policies">1.2 Set IAM Policies<a class="headerlink" href="#12-set-iam-policies" title="Permanent link">#</a></h3>
 <p>We take security very seriously. So let's create a policy to set user-level Live Debugging breakpoints. </p>
 <p>We need two policies for your user to be able to set breakpoints and to read snapshots. 
-For this we go to <strong>Account Management &gt; Identity &amp; Access management &gt; + Policy</strong></p>
+For this we go to **Account Management &gt; Identity &amp; Access management &gt; Policy Management &gt; Create Policy **</p>
 <p>Set breakpoints
 <div class="highlight"><pre><span></span><code>ALLOW<span class="w"> </span>dev-obs:breakpoints:set<span class="p">;</span>
 </code></pre></div>
@@ -653,8 +653,7 @@ ALLOW<span class="w"> </span>storage:buckets:read<span class="w"> </span>WHERE<s
 <p><img alt="DevOps Policy" src="../img/devops_policy.png" /></p>
 <p><a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">More info here about the IAM Policies here</a>
 Then we bind it to a user group. In this case since we are admins, let's bind the policy to the Admin group. Notice that the created policy is for an Admin and also for a Developer. Since we allow to <code>read</code> and <code>set</code> breakpoints but also to <code>manage</code> breakpoints <a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/additional-settings#manage-breakpoints">which is explained here</a>.</p>
-<p>Go to <strong>Group Management &gt; Select Admin Group &gt; + Permission</strong>  (and bind the policy)
-<img alt="Bind Group" src="../img/bind_group.png" /></p>
+<p>Go to <strong>Identify &amp; Access Management &gt; Group Management &gt; Create Group</strong></p>
 <p>Like this you have the fine control to give your developers, SRE teams and whoever you want to set breakpoints and read the snapshots. For more granular access <a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">please continue reading here</a> </p>
 <h3 id="13-enable-live-debugger-activegate-module">1.3 Enable Live Debugger ActiveGate module<a class="headerlink" href="#13-enable-live-debugger-activegate-module" title="Permanent link">#</a></h3>
 <p>Now we need to enable the <a href="https://docs.dynatrace.com/docs/shortlink/do-setup#enable-live-debugging-in-environment-activegate-module">Live Debugger ActiveGate module</a>:</p>
