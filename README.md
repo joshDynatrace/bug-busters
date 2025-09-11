@@ -33,6 +33,8 @@ If you're ready to get started finding some bugs, click the link below to move f
 
 ## Quickstart
 
+Here are some short quickstart details to get going as you spin up the codespaces. More details are in the link at the bottom of the page.
+
 1) To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
 
 You'll need:
