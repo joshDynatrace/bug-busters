@@ -31,7 +31,31 @@ Dynatrace's Observability for Developers allows you to:
 
 If you're ready to get started finding some bugs, click the link below to move forward...
 
-To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
+## Quickstart
+
+1) To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
+
+You'll need:
+ - A Dynatrace tenant endpoint which should look something like 'https://abc12345.live.dynatrace.com' 
+    - Dynatrace Operator Token
+    - Dynatrace Ingest Access Token with the following permissions:
+        - metrics.ingest
+        - logs.ingest
+        - openTelemetryTrace.ingest
+    - The above tokens can be generated easily from the Kubernetes app by clicking on Add Cluster -> Other Distributions -> Install Dynatrace Operator Section
+
+2) The codespace will automatically create a [Kind](https://kind.sigs.k8s.io/) Kubernetes cluster and deploy the BugZapper application and To-Do app. You can run
+
+   ```sh
+   kubectl get pods -n bugzapper
+   ```
+   ```sh
+   kubectl get pods -n todoapp
+   ```
+   To see that the pods have spun up successfully. The Dynatrace One Agent should also be available:
+   ```sh
+   kubectl get pods -n dynatrace
+   ```
 
 Let's Get Started...
 
