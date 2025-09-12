@@ -26,7 +26,7 @@ When deploying the components inside this repository a Dynatrace App will also b
 
 ## Quickstart
 
-Here are some short quickstart details to get going as you spin up the codespaces. More details are in the link at the bottom of the page.
+Here are some short quickstart details to get going as you spin up the codespaces. More specific details are in the link at the bottom of the page.
 
 1) To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
 
@@ -38,6 +38,10 @@ You'll need:
         - logs.ingest
         - openTelemetryTrace.ingest
     - The above tokens can be generated easily from the Kubernetes app by clicking on Add Cluster -> Other Distributions -> Install Dynatrace Operator Section
+    - An [OAuth Client](https://developer.dynatrace.com/develop/access-platform-apis-from-outside/#create-an-oauth-client) including the Client ID and Client Secret created from the Dynatrace Account settings to deploy the Dynatrace app. You'll need the following permissions:
+        - app-engine:apps:install
+        - app-engine:apps:run
+        - app-engine:apps:delete (to uninstall the app if needed)
 
 2) The codespace will automatically create a [Kind](https://kind.sigs.k8s.io/) Kubernetes cluster and deploy the BugZapper application and To-Do app. You can run
 

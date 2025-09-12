@@ -1,0 +1,13 @@
+{
+  "environmentUrl": "https://arn95277.apps.dynatrace.com/",
+  "app": {
+    "name": "Bug Busters",
+    "version": "1.0.1",
+    "description": "Bug Buster Bug Finding Quiz",
+    "id": "bug.busters",
+    "scopes": [
+      { "name": "state:user-app-states:write", "comment": "Store quiz results" },
+      { "name": "state:user-app-states:read", "comment": "Read quiz results" }
+    ]
+  }
+}
