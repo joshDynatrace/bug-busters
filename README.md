@@ -18,18 +18,11 @@ Your mission in this bug finding expedition is to find bugs in the following two
 
 As part of the journey, you'll utilize Dynatraces Live Debugger and other capabilities to find where the bugs are occuring in the codebase.
 
-Dynatrace's Observability for Developers allows you to:
-
-- Debug running applications in any environment
-- Gain instant insights into debug level data to diagnose problems
-- Get full visibility into code and code execution
-- Instantly debug complex workflows
+When deploying the components inside this repository a Dynatrace App will also be deployed. This app is a quiz app which will ask you a set of multiple choice questions which you need to answer in the shortest time possible to achieve the highest score.
 
 <p align="center">
     <img src="docs/img/bug-busters.jpg" alt="Bug Busters" width="500"/>
 </p>
-
-If you're ready to get started finding some bugs, click the link below to move forward...
 
 ## Quickstart
 
