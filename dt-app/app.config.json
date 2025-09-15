@@ -2,7 +2,7 @@
   "environmentUrl": "https://arn95277.apps.dynatrace.com/",
   "app": {
     "name": "Bug Busters",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Bug Buster Bug Finding Quiz",
     "id": "my.bug.busters",
     "scopes": [
