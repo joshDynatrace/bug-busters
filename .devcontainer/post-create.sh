@@ -17,6 +17,8 @@ deployTodoApp
 
 deployBugZapperApp
 
+deployDynatraceApp
+
 finalizePostCreation
 
 printInfoSection "Your dev container finished creating"

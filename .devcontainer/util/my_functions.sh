@@ -33,3 +33,18 @@ deployBugZapperApp(){
 
   printInfoSection "Bugzapper is available via NodePort=30200"
 }
+
+deployDynatraceApp(){
+  cd dt-app
+
+  # get host from tenant URL
+  export DT_HOST=$(echo $DT_TENANT | cut -d'/' -f3 | cut -d'.' -f1)
+
+  # replace host in app config for Dynatrace App Deployment
+  envsubst < app.config.json
+
+  npm install
+
+  # deploy dynatrace app - note this will fail if the version in app.config.json has already been deployed
+  npx dt-app deploy
+}
