@@ -40,7 +40,8 @@ if [[ $CODESPACES == true ]]; then
 fi
 echo -e "                                                                                                             "
 echo -e "${CYAN}This devcontainer is exposing the following processes:${RESET} "
-echo -e "  ${LILA}Web App UI:${RESET} ${WEBAPP_URL} "
+echo -e "  ${LILA}Todo App UI:${RESET} ${WEBAPP_URL} "
+echo -e "  ${LILA}BugZapper App UI:${RESET} ${BUGZAPPER_URL} "
 echo -e "                                                                                                             "
 echo -e "${CYAN}This container has the following tools installed and configured for your best experience:${RESET} "
 echo -e "  ${RESET}k9s kubectl helm node jq python3 gh zsh kind p10k ${RESET} "
