@@ -18,15 +18,7 @@ The Live Debugger is a solution within the package of [Observability for Develop
 </p>
 
 
-Are you ready to start the Bug hunting journey?
-
-<div class="grid cards" markdown>
-- [Yes! let's begin :octicons-arrow-right-24:](1-bugzappers-bugs.md)
-</div>
-
-<br>
-
-If you need assistance setting up the Dynatrace tenant to run this bug finding exercise with click here (admins only):
+Let's setup your dynatrace tenant. Click below to start.
 
 <div class="grid cards" markdown>
 - [Help me setup my tenant :octicons-arrow-right-24:](getting-started.md)

@@ -66,6 +66,8 @@ showOpenPorts(){
 }
 ```
 
+Now let's get started with the bug hunting. Click below to start.
+
 <div class="grid cards" markdown>
 - [Let's Find Some Bugs:octicons-arrow-right-24:](1-bugzappers-bugs.md)
 </div>
