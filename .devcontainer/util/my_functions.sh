@@ -41,7 +41,7 @@ deployDynatraceApp(){
   export DT_HOST=$(echo $DT_TENANT | cut -d'/' -f3 | cut -d'.' -f1)
 
   # replace host in app config for Dynatrace App Deployment
-  envsubst < app.config.json
+  sed -i "s/ENVIRONMENTID/$DT_HOST/" app.config.json  
 
   npm install
 
