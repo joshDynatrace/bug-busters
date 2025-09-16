@@ -47,6 +47,8 @@ deployDynatraceApp(){
   TODO_PORT=30100
   BUGZAPPER_PORT=30200
 
+  printInfo "Updating Quiz questions with codespaces URLs."
+
   if [ -n "$CODESPACE_NAME" ]; then
     BUGZAPPER_URL="https://${CODESPACE_NAME}-${BUGZAPPER_PORT}.app.github.dev"
     TODO_URL="https://${CODESPACE_NAME}-${TODO_PORT}.app.github.dev"
@@ -59,8 +61,10 @@ deployDynatraceApp(){
   sed -i "s|{{BUGZAPPER_URL}}|${BUGZAPPER_URL}|g" ui/app/data/quizData.ts
   sed -i "s|{{TODO_URL}}|${TODO_URL}|g" ui/app/data/quizData.ts
 
+  printInfo "Installing dynatrace app dependencies."
   npm install
 
   # deploy dynatrace app - note this will fail if the version in app.config.json has already been deployed
+  printInfo "Deploying the Dynatrace app to $DT_TENANT"
   npx dt-app deploy
 }
