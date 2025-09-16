@@ -91,7 +91,9 @@ Conditions:
 Kubernetes namespace name = todoapp
 ```
 
-Click on `Save changes`.
+Click on `Save changes`. 
+
+Repeat the above steps for the Bugzapper app instead using namespace name = bugzapper.
 
 **Ingest all logs**
 
