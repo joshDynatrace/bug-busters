@@ -95,7 +95,7 @@ export const QuizPage: React.FC = () => {
           lineHeight: '1.6',
           fontStyle: 'italic'
         }}>
-          {question.bugDescription}
+          <span dangerouslySetInnerHTML={{ __html: question.bugDescription }} />
         </Paragraph>
         
         <Flex flexDirection="column" gap={16}>
