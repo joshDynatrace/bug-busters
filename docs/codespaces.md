@@ -29,7 +29,7 @@ Your Codespace has now deployed the following resources:
 
 - The Todo Java App and the Bugzapper Node.js app which will be used in our debugging quiz
 
-- The Dynatrace Quiz App which will be available at https://<YourTenantID>.apps.dynatrace.com/ui/apps/my.bug.busters/
+- The Dynatrace Quiz App which will be available at https://yourTenantID.apps.dynatrace.com/ui/apps/my.bug.busters/
 
 ## 3. Tips & Tricks
 
