@@ -362,18 +362,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-enable-live-debugger-activegate-module" class="md-nav__link">
+  <a href="#13-enable-log-ingest" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3 Enable Live Debugger ActiveGate module
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-enable-log-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Enable Log Ingest
+      1.3 Enable Log Ingest
     </span>
   </a>
   
@@ -405,6 +396,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-oauth-client-for-automated-dynatrace-quiz-app-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create OAuth Client for Automated Dynatrace Quiz App Deployment
+    </span>
+  </a>
   
 </li>
       
@@ -549,18 +549,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-enable-live-debugger-activegate-module" class="md-nav__link">
+  <a href="#13-enable-log-ingest" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3 Enable Live Debugger ActiveGate module
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-enable-log-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Enable Log Ingest
+      1.3 Enable Log Ingest
     </span>
   </a>
   
@@ -595,6 +586,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-create-oauth-client-for-automated-dynatrace-quiz-app-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create OAuth Client for Automated Dynatrace Quiz App Deployment
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -625,10 +625,10 @@
 <h2 id="1-dynatrace-tenant-setup">1. Dynatrace Tenant Setup<a class="headerlink" href="#1-dynatrace-tenant-setup" title="Permanent link">#</a></h2>
 <p>You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Monitoring' rate card should be associated with it. To validate go to Account Management &gt; Subscription &gt; Overview in your tenant. Code monitoring should be listed in the capability table.</p>
 <p>In addition the application needs to be monitored with Dynatrace FullStack mode. This is done for you in this example.</p>
-<p>The Live Debugger currently supports application runtimes: Java, NodeJS. </p>
+<p>The Live Debugger currently supports application runtimes: Java, NodeJS.</p>
 <h3 id="11-enable-observability-for-developers">1.1 Enable Observability for Developers<a class="headerlink" href="#11-enable-observability-for-developers" title="Permanent link">#</a></h3>
 <ul>
-<li>Go to Settings &gt; General monitoring settings &gt; OneAgent features.<ul>
+<li>Go to Settings Classic &gt; Preferences &gt; OneAgent features.<ul>
 <li>Enable the Java Live-Debugger and Node.js Live-Debugger</li>
 </ul>
 </li>
@@ -651,24 +651,15 @@ ALLOW<span class="w"> </span>storage:buckets:read<span class="w"> </span>WHERE<s
 </code></pre></div></p>
 <p>The policy should look something like this:</p>
 <p><img alt="DevOps Policy" src="../img/devops_policy.png" /></p>
-<p><a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">More info here about the IAM Policies here</a>
-Then we bind it to a user group. In this case since we are admins, let's bind the policy to the Admin group. Notice that the created policy is for an Admin and also for a Developer. Since we allow to <code>read</code> and <code>set</code> breakpoints but also to <code>manage</code> breakpoints <a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/additional-settings#manage-breakpoints">which is explained here</a>.</p>
+<p><a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">More info here about the IAM Policies here</a></p>
+<p>Then we bind it to a user group. Next we'll create a Group and then add your user to the group.</p>
 <p>Go to <strong>Identify &amp; Access Management &gt; Group Management &gt; Create Group</strong></p>
-<p>Name the Group 'Live Debugger User' and click <strong>Create</strong>.</p>
-<p>In the Live Debugger group click <strong>+ Permission</strong> and add the Policy we just created.</p>
+<p>Give the group a name and click <strong>Create</strong>.</p>
+<p>In the Live Debugger group we just created click <strong>+ Permission</strong> and add the Policy we just created.</p>
+<p><img alt="Live Debugger Group" src="../img/live-debugger-group.png" /></p>
 <p>Finally ensure your user is part of the Live Debugger User group. Go to <strong>Identity &amp; Access Management &gt; User Management</strong> and find your user. Click on the three dots to the right and select <strong>Edit User</strong>. Ensure the group for 'Live Debugger User' is selected and Save.</p>
-<p>Like this you have the fine control to give your developers, SRE teams and whoever you want to set breakpoints and read the snapshots. For more granular access <a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">please continue reading here</a> </p>
-<h3 id="13-enable-live-debugger-activegate-module">1.3 Enable Live Debugger ActiveGate module<a class="headerlink" href="#13-enable-live-debugger-activegate-module" title="Permanent link">#</a></h3>
-<p>Now we need to enable the <a href="https://docs.dynatrace.com/docs/shortlink/do-setup#enable-live-debugging-in-environment-activegate-module">Live Debugger ActiveGate module</a>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#Set debugging_enabled to true in the custom.properties file.</span>
-<span class="nt">activeGate</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">customProperties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">[debugging]</span>
-<span class="w">        </span><span class="no">debugging_enabled = true</span>
-</code></pre></div>
-This is already set up for you in the codespaces automatically in the <a href="https://github.com/dynatrace-wwse/enablement-live-debugger-bug-hunting/blob/main/.devcontainer/yaml/dynakube-skel.yaml">Dynakube.yaml</a> file so no need to restart the ActiveGate.</p>
-<h3 id="14-enable-log-ingest">1.4 Enable Log Ingest<a class="headerlink" href="#14-enable-log-ingest" title="Permanent link">#</a></h3>
+<p>For more granular access and contiued explanations <a href="https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup">please continue reading here</a> </p>
+<h3 id="13-enable-log-ingest">1.3 Enable Log Ingest<a class="headerlink" href="#13-enable-log-ingest" title="Permanent link">#</a></h3>
 <p>You have (2) options:</p>
 <ul>
 <li>Configure log ingest rule to ingest relevant logs for this lab</li>
@@ -692,7 +683,7 @@ This is already set up for you in the codespaces automatically in the <a href="h
 <p><strong>Ingest all logs</strong></p>
 <p>Locate the rule <code>[Built-in] Ingest all logs</code> and enable it.  Click <code>Save changes</code>.</p>
 <h2 id="2-create-dynatrace-api-tokens-for-kubernetes-observability">2. Create Dynatrace API Tokens for Kubernetes Observability<a class="headerlink" href="#2-create-dynatrace-api-tokens-for-kubernetes-observability" title="Permanent link">#</a></h2>
-<p>This codespace has everything automated for you so you can focus on what matters which in this enablement is to learn about the Live Debugging capabilities of the Dynatrace Platform.  You'll need two tokens:</p>
+<p>As described in the main README of this codespaces, you'll need two tokens:</p>
 <ol>
 <li>Operator Token</li>
 <li>Ingest Token </li>
@@ -701,16 +692,26 @@ This is already set up for you in the codespaces automatically in the <a href="h
 <h3 id="21-get-the-operator-token-and-the-ingest-token-from-the-kubernetes-app">2.1. Get the Operator Token and the Ingest Token from the Kubernetes App<a class="headerlink" href="#21-get-the-operator-token-and-the-ingest-token-from-the-kubernetes-app" title="Permanent link">#</a></h3>
 <ol>
 <li>Open the Kubernetes App (CTRL + K then type Kubernetes for fast access)</li>
-<li>Select the + Add cluster button</li>
+<li>Select the <code>+ Add cluster</code> button in the top right</li>
 <li>Scroll down to the section Install Dynatrace Operator </li>
 <li>Click on generate Token for the 'Dynatrace Operator' and save it to your Notepad</li>
 <li>Click on generate Token for the 'Data Ingest Token' and save it to your Notepad</li>
-<li>You can close the Kubernetes App, we don't need it, we just needed the tokens.</li>
 </ol>
 <p><img alt="Kubernetes Tokens" src="../img/k8s_tokens.png" /></p>
+<h2 id="3-create-oauth-client-for-automated-dynatrace-quiz-app-deployment">3. Create OAuth Client for Automated Dynatrace Quiz App Deployment<a class="headerlink" href="#3-create-oauth-client-for-automated-dynatrace-quiz-app-deployment" title="Permanent link">#</a></h2>
+<p>In order to deploy the Dynatrace app into your tenant when the codespace starts up we will need to create an OAuth Client.</p>
+<ol>
+<li>Go tou your Account Settings and select your desired account.</li>
+<li>Navigate to Identity &amp; access management &gt; OAuth clients.</li>
+<li>Click the Create client button.</li>
+<li>Fill in your email and add the following scopes: <code>app-engine:apps:install</code> <code>app-engine:apps:run</code> <code>app-engine:apps:delete</code></li>
+<li>After selecting the appropriate OAuth permissions, click the Create client button at the bottom of the page to generate the OAuth client.</li>
+<li>Save the Client ID and Client Secret which will be needed when starting the codespace.</li>
+</ol>
+<p>More details can be found by following the <a href="https://developer.dynatrace.com/develop/deploy-your-app/#deploy-from-a-cicd-pipeline">instructions here</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Let's launch the Codespace</p>
-<p>Now we are ready to launch the Codespace! You'll need your tenant and the two tokens previuosly gathered from above. When you enter the tenant please enter it without the 'apps' part, for production tenants eg. abc12345 for live -&gt; https://abc12345.live.dynatrace.com and for sprint -&gt; https://abc12345.sprint.dynatracelabs.com no apps in the URL.</p>
+<p>Now we are ready to launch the Codespace! You'll need your tenant and the tokens previuosly created from above. When you enter the tenant please enter it without the 'apps' part of the URL. For production tenants -&gt; https://abc12345.live.dynatrace.com and for sprint tenants -&gt; https://abc12345.sprint.dynatracelabs.com.</p>
 </div>
 <div class="grid cards">
 <ul>
