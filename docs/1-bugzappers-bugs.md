@@ -1,6 +1,6 @@
 --8<-- "snippets/bugzappers-bugs.js"
 
-## Bug 1: Play and Game and Clear the Scores
+## Bug 1: Why are the top scores not being cleared?
 There are a few bugs in the Bugzapper app and your mission is to find them by investigating the application and using Dynatrace to help your investigation.
 
 Open the bugzappers game in your browser (if its not open, go to the codespaces 'Ports' tab and open the app on port 30200 in your browser)
@@ -18,7 +18,7 @@ To start, play a game to make sure there are some top scores on the scoreboard:
 
 - Use the Live Debugger to set a breakpoint in the part of the code that's responsible for clearing the scores. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the `bugzapper` namespace as the filter. The source code repository should populate automatically. 
 
-## Bug 2: View Past Game Stats
+## Bug 2: Why are the past game stats not showing up correctly?
 Now that you've played a game, you can view your game stats by clicking on the `View Game Stats` button.
 
 ![Bug Zapper Stats](img/bugzapper-game-stats.png)
