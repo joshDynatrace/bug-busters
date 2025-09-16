@@ -9,7 +9,7 @@ In this bug finding tutorial it's your job (with a few hints) to find bugs in tw
 - BugZappers - an asteroids style game
 - Todo App - a todo app for keeping track of todo tasks
 
-As part of the tasks you will utilize Dynatraces new Live Debugger.
+As part of the tasks you will utilize Dynatraces new Live Debugger, Logs, and Traces apps.
 
 The Live Debugger is a solution within the package of [Observability for Developers](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability){target=_blank} of the Dynatrace Platform which provides developers with instant access to code-level debug data needed to troubleshoot and understand complex, modern applications with no extra coding, redeployments, or restarts.
 

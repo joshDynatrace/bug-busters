@@ -6,11 +6,11 @@ You will need a Dynatrace SaaS tenant with a DPS pricing model and the 'Code Mon
 
 In addition the application needs to be monitored with Dynatrace FullStack mode. This is done for you in this example.
 
-The Live Debugger currently supports application runtimes: Java, NodeJS. 
+The Live Debugger currently supports application runtimes: Java, NodeJS.
 
 ### 1.1 Enable Observability for Developers
 
-- Go to Settings > General monitoring settings > OneAgent features.
+- Go to Settings Classic > Preferences > OneAgent features.
      - Enable the Java Live-Debugger and Node.js Live-Debugger
 - Go to Settings > Observability for Developers > Enable Observability for Developers
 
@@ -43,34 +43,23 @@ The policy should look something like this:
 ![DevOps Policy](img/devops_policy.png)
 
 [More info here about the IAM Policies here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup)
-Then we bind it to a user group. In this case since we are admins, let's bind the policy to the Admin group. Notice that the created policy is for an Admin and also for a Developer. Since we allow to `read` and `set` breakpoints but also to `manage` breakpoints [which is explained here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/additional-settings#manage-breakpoints).
+
+Then we bind it to a user group. Next we'll create a Group and then add your user to the group.
 
 Go to **Identify & Access Management > Group Management > Create Group**
 
-Name the Group 'Live Debugger User' and click **Create**.
+Give the group a name and click **Create**.
 
-In the Live Debugger group click **+ Permission** and add the Policy we just created.
+In the Live Debugger group we just created click **+ Permission** and add the Policy we just created.
+
+![Live Debugger Group](img/live-debugger-group.png)
 
 Finally ensure your user is part of the Live Debugger User group. Go to **Identity & Access Management > User Management** and find your user. Click on the three dots to the right and select **Edit User**. Ensure the group for 'Live Debugger User' is selected and Save.
 
-Like this you have the fine control to give your developers, SRE teams and whoever you want to set breakpoints and read the snapshots. For more granular access [please continue reading here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup) 
+For more granular access and contiued explanations [please continue reading here](https://docs.dynatrace.com/docs/observe/applications-and-microservices/developer-observability/offering-capabilities/setup) 
 
 
-### 1.3 Enable Live Debugger ActiveGate module
-
-Now we need to enable the [Live Debugger ActiveGate module](https://docs.dynatrace.com/docs/shortlink/do-setup#enable-live-debugging-in-environment-activegate-module):
-
-```yaml
-#Set debugging_enabled to true in the custom.properties file.
-activeGate:
-    customProperties:
-      value: |
-        [debugging]
-        debugging_enabled = true
-```
-This is already set up for you in the codespaces automatically in the [Dynakube.yaml](https://github.com/dynatrace-wwse/enablement-live-debugger-bug-hunting/blob/main/.devcontainer/yaml/dynakube-skel.yaml) file so no need to restart the ActiveGate.
-
-### 1.4 Enable Log Ingest
+### 1.3 Enable Log Ingest
 
 You have (2) options:
 
@@ -109,7 +98,7 @@ Click on `Save changes`.
 Locate the rule `[Built-in] Ingest all logs` and enable it.  Click `Save changes`.
 
 ## 2. Create Dynatrace API Tokens for Kubernetes Observability
-This codespace has everything automated for you so you can focus on what matters which in this enablement is to learn about the Live Debugging capabilities of the Dynatrace Platform.  You'll need two tokens:
+As described in the main README of this codespaces, you'll need two tokens:
 
 1. Operator Token
 2. Ingest Token 
@@ -119,18 +108,27 @@ We will get these two from the Kubernetes App.
 ### 2.1. Get the Operator Token and the Ingest Token from the Kubernetes App
 
 1. Open the Kubernetes App (CTRL + K then type Kubernetes for fast access)
-2. Select the + Add cluster button
+2. Select the `+ Add cluster` button in the top right
 3. Scroll down to the section Install Dynatrace Operator 
 4. Click on generate Token for the 'Dynatrace Operator' and save it to your Notepad
 5. Click on generate Token for the 'Data Ingest Token' and save it to your Notepad
-6. You can close the Kubernetes App, we don't need it, we just needed the tokens.
 
 ![Kubernetes Tokens](img/k8s_tokens.png)
 
+## 3. Create OAuth Client for Automated Dynatrace Quiz App Deployment
+In order to deploy the Dynatrace app into your tenant when the codespace starts up we will need to create an OAuth Client.
 
+1. Go tou your Account Settings and select your desired account.
+2. Navigate to Identity & access management > OAuth clients.
+3. Click the Create client button.
+4. Fill in your email and add the following scopes: `app-engine:apps:install` `app-engine:apps:run` `app-engine:apps:delete`
+5. After selecting the appropriate OAuth permissions, click the Create client button at the bottom of the page to generate the OAuth client.
+6. Save the Client ID and Client Secret which will be needed when starting the codespace.
+
+More details can be found by following the [instructions here](https://developer.dynatrace.com/develop/deploy-your-app/#deploy-from-a-cicd-pipeline).
 
 !!! tip "Let's launch the Codespace"
-    Now we are ready to launch the Codespace! You'll need your tenant and the two tokens previuosly gathered from above. When you enter the tenant please enter it without the 'apps' part, for production tenants eg. abc12345 for live -> https://abc12345.live.dynatrace.com and for sprint -> https://abc12345.sprint.dynatracelabs.com no apps in the URL.
+    Now we are ready to launch the Codespace! You'll need your tenant and the tokens previuosly created from above. When you enter the tenant please enter it without the 'apps' part of the URL. For production tenants -> https://abc12345.live.dynatrace.com and for sprint tenants -> https://abc12345.sprint.dynatracelabs.com.
 
 
 <div class="grid cards" markdown>

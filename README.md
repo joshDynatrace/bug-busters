@@ -16,7 +16,7 @@ Your mission in this bug finding expedition is to find bugs in the following two
 - BugZapper Asteroids Style Game (Node.js application)
 - To-Do App (Java application)
 
-As part of the journey, you'll utilize Dynatraces Live Debugger and other capabilities to find where the bugs are occuring in the codebase.
+As part of the journey, you'll utilize Dynatraces Live Debugger, Logs, and Traces to find where the bugs are occuring in the codebase.
 
 When deploying the components inside this repository a Dynatrace App will also be deployed. This app is a quiz app which will ask you a set of multiple choice questions which you need to answer in the shortest time possible to achieve the highest score.
 
