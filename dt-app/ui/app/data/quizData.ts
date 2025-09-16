@@ -2,7 +2,10 @@ export interface QuizQuestion {
   id: number;
   bugHeading: string;
   bugDescription: string;
-  hints: string[];
+  hints: {
+    text: string;
+    bullets: string[];
+  }[];
   question: string;
   answers: {
     id: string;
@@ -17,12 +20,25 @@ export const POINTS_PER_CORRECT_ANSWER = 100;
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
-    bugHeading: "Play Bugzappers and Clear the Scores",
-    bugDescription: "There are a few bugs in the Bugzapper app and your mission is to find them by investigating the application and using Dynatrace to help your investigation. Open the <a href='{{BUGZAPPER_URL}}' target='_blank'>Bugzappers game</a> in your browser. To start, play a game to make sure there are some top scores on the scoreboard.",
+    bugHeading: "Why are the top scores not being cleared?",
+    bugDescription: "There are a few bugs in the Bugzapper app and your mission is to find them by interacting with the application and using Dynatrace to help your investigation. <br/><br/> 🎮 Let's play <a href='{{BUGZAPPER_URL}}' target='_blank'>Bugzappers</a>! <br/><br/>Open the Bugzappers app. Play it once. <strong>Click Submit Your Score</strong>.<br/><br/>Try to <strong>Clear the scores</strong>. Now let's troubleshoot!",
     hints: [
-      "Try to clear the scores from the Top Scores. What do you notice?",
-      "Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the asteroids-game service. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app",
-      "Use the Live Debugger to set a breakpoint in the part of the code in 'server.js' that's responsible for clearing the scores. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the bugzapper namespace as the filter. The source code repository should populate automatically."
+      {
+        text: "Try to use Distributed Tracing app to understand which API calls are being made.",
+        bullets: [
+          "Filter on 'Service=asteroids-game'",
+          "Which API calls are made?"
+        ]
+      },
+      {
+        text: "Try to use Live Debugger app.",
+        bullets: [
+          "Click the purple pencil icon to set a filter - 'namespace=bugzappers'. The source code repository should populate automatically.",
+          "Set the breakpoint in server.js code, where clearing the scores is implemented.",
+          "Try to 'CLEAR THE SCORES' in the app few more times.",
+          "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
+        ]
+      }
     ],
     question: "Why are the top scores not being cleared?",
     answers: [
@@ -50,12 +66,58 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 2,
-    bugHeading: "Bug in Past Game Stats",
-    bugDescription: "Now that you've played a game, you can view your game stats by clicking on the 'View Game Stats' button. Now click on 'Past Game Stats' to view the past game stats. What do you notice?",
+    bugHeading: "What exception is being thrown when the past game stats are being updated?",
+    bugDescription: "Now that you've played a game, you can view your game stats by clicking on the <strong>View Game Stats</strong> button.<br/><br/>Click on <strong>Past Game Stats</strong> to view the past game stats.<br/><br/>Notice the accurary is showing as null. Why is that happening?",
     hints: [
-      "Try to use the Distributed Tracing App to understand which API calls are being made. Filter on the asteroids-game service.",
-      "Go to the Asteroids Game service in the Services app and check out the Logs. Notice there are some failures. Press 'ctrl/cmd + K' in Dynatrace and type 'Services' to find the app.",
-      "Based on the error logs, use the Live Debugger to set a breakpoint in the part of the code in 'server.js' that is responsible for storing the game stats when a game ends."
+      {
+        text: "Go to the Asteroids Game service in the Services app and check out the Logs.",
+        bullets: [
+          "Look for errors in the logs",
+          "Press 'Ctrl/Cmd + K' in Dynatrace and type 'Services' to find the app"
+        ]
+      }
+    ],
+    question: "What exception is being thrown when the past game stats are being updated?",
+    answers: [
+      {
+        id: "a",
+        text: "An ArrayOutofBoundsException",
+        isCorrect: false
+      },
+      {
+        id: "b",
+        text: "A FileNotFoundException",
+        isCorrect: false
+      },
+      {
+        id: "c",
+        text: "A NoSuchMethodException",
+        isCorrect: false
+      },
+      {
+        id: "d",
+        text: "A Divide By Zero Exception",
+        isCorrect: true
+      }
+    ]
+  },  
+  {
+    id: 3,
+    bugHeading: "Why are the past game stats not showing up correctly?",
+    bugDescription: "Now that we know an exception was being thrown let's find out why the past game stats were null and where in the code this was happening.",
+    hints: [
+      {
+        text: "Try to use Distributed Tracing app to understand which API calls are being made when you click Past Game Stats.",
+        bullets: [
+          "Filter on 'Service=asteroids-game'"
+        ]
+      },
+      {
+        text: "Use the Live Debugger to set a non-breaking breakpoint.",
+        bullets: [
+          "Based on the error logs, set a breakpoint in the part of the code in 'server.js' that is responsible for storing the game stats when a game ends"
+        ]
+      }
     ],
     question: "Why is the accuracy game stat coming back as null?",
     answers: [
@@ -82,13 +144,26 @@ export const quizQuestions: QuizQuestion[] = [
     ]
   },
   {
-    id: 3,
-    bugHeading: "Todo App: Clear Completed Tasks",
-    bugDescription: "Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the Todo App. There are a few bugs in the app that we'll need to investigate. Open the <a href='{{TODO_URL}}' target='_blank'>Todo app</a> and add a few tasks. Complete some of them by clicking to the left of the task and then Clear the completed tasks. What happens?",
+    id: 4,
+    bugHeading: "TODO App: Clear Completed Tasks",
+    bugDescription: "Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the TODO App. There are a few bugs in the app that we'll need to investigate.<br/><br/>✅ Open the <a href='{{TODO_URL}}' target='_blank'>TODO app</a>.<br/><br/>Add a few tasks (hit enter to add).<br/>Complete some of them by clicking to the left of the task.<br/>Clear the completed tasks. What happens?<br/>Why are the TODO tasks not being cleared?",
     hints: [
-      "Open up the distributed traces app to make sure API calls work as expected and understand which calls were made to the backend. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app.",
-      "Open the Live Debugger to set a breakpoint in the the function called when you clear Todos. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the namespace todoapp as your Live Debugger filter.",
-      "Why are the Todo tasks not getting cleared after looking at the code?"
+      {
+        text: "Open up the distributed traces app to find out which API calls are being made to the backend.",
+        bullets: [
+          "Filter on 'Kubernetes Namespace=todoapp'",
+          "Which API calls are made?"
+        ]
+      },
+      {
+        text: "Try to use the Live Debugger app.",
+        bullets: [
+          "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
+          "Set the breakpoint in the function that is called when you clear TODOs.",
+          "Try to 'Clear the TODOS' in the app a few more times.",
+          "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
+        ]
+      }
     ],
     question: "Why are the Todo tasks not getting cleared?",
     answers: [
@@ -115,13 +190,26 @@ export const quizQuestions: QuizQuestion[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     bugHeading: "Todo App: Issue with Special Characters",
-    bugDescription: "Let's add a todo task with some special characters such as exclamation points. What do you notice? Where is the bug?",
+    bugDescription: "Let's add a todo task with some special characters such as exclamation points.<br/><br/>What do you notice? Where is the bug?",
     hints: [
-      "Use the distributed tracing app to filter traces based on the app name, kubernetes namespace, or workload names to see which services are being called. Press 'ctrl/cmd + K' in Dynatrace and type 'Distributed Tracing' to find the app.",
-      "Use the Live Debugger to set a breakpoint in the part of the code you found to analyze the data. Press 'ctrl/cmd + K' in Dynatrace and type 'Live Debugger' to find the app. Click the purple pencil icon to set a Live Debugger filter. Use the namespace todoapp as your Live Debugger filter.",
-      "What's happening to the todotitle as it gets added to our list of todos?"
+      {
+        text: "Open up the distributed traces app to find out which API calls are being made to the backend.",
+        bullets: [
+          "Filter on 'Kubernetes Namespace=todoapp'",
+          "Which API calls are made?"
+        ]
+      },
+      {
+        text: "Try to use the Live Debugger app.",
+        bullets: [
+          "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
+          "Set the breakpoint in the function that is called when you clear TODOs.",
+          "Try to 'Clear the TODOS' in the app a few more times.",
+          "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
+        ]
+      }
     ],
     question: "Why are special characters being removed when saving the Todo task?",
     answers: [
@@ -137,7 +225,7 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "c",
-        text: "The special characters are actually not being removed",
+        text: "The special characters are being removed correctly",
         isCorrect: false
       },
       {

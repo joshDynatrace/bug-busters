@@ -106,25 +106,41 @@ export const QuizPage: React.FC = () => {
           }}>
             💡 Hints:
           </Heading>
-          <ul style={{ 
-            margin: 0, 
-            paddingLeft: '24px',
-            listStyleType: 'disc',
-            color: '#24292f'
-          }}>
+          <Flex flexDirection="column" gap={20}>
             {question.hints.map((hint, index) => (
-              <li key={index} style={{ marginBottom: '12px' }}>
+              <div key={index}>
                 <Paragraph style={{ 
                   margin: 0,
                   color: '#24292f',
                   fontSize: '16px',
-                  lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  fontWeight: '500',
+                  marginBottom: '8px'
                 }}>
-                  {hint}
+                  {hint.text}
                 </Paragraph>
-              </li>
+                <ul style={{ 
+                  margin: 0, 
+                  paddingLeft: '20px',
+                  listStyleType: 'disc',
+                  color: '#24292f'
+                }}>
+                  {hint.bullets.map((bullet, bulletIndex) => (
+                    <li key={bulletIndex} style={{ marginBottom: '6px' }}>
+                      <Paragraph style={{ 
+                        margin: 0,
+                        color: '#24292f',
+                        fontSize: '15px',
+                        lineHeight: '1.5'
+                      }}>
+                        {bullet}
+                      </Paragraph>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </Flex>
         </Flex>
       </Flex>
 

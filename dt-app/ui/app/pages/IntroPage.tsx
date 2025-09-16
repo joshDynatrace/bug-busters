@@ -71,10 +71,9 @@ export const IntroPage: React.FC = () => {
           lineHeight: '1.6',
           color: '#24292f'
         }}>
-          Ready to test your debugging skills? In this interactive quiz, you'll analyze 
-          and try to pinpoint software bugs across two different applications and then
-          answer multiple-choice questions about their causes and solutions.
-          Your score will be based on correct answers and how quickly you complete the challenge.
+          Ready to test your debugging skills?
+          <br /><br />
+          🕒 5 Questions. 100 points each. 30 minutes.
         </Paragraph>
         
         <Paragraph style={{ 
@@ -84,8 +83,7 @@ export const IntroPage: React.FC = () => {
           color: '#586069',
           fontStyle: 'italic'
         }}>
-          ⏱️ You have a maximum of 30 minutes to answer 4 questions. Each correct answer earns you 
-          100 points. The faster you finish the higher your score will be.
+          Your score will be based on correct answers and time taken to complete the challenge.
         </Paragraph>
       </Flex>
 
@@ -105,13 +103,13 @@ export const IntroPage: React.FC = () => {
           📝 Enter Your Information
         </Heading>
         
-        <Flex flexDirection="column" gap={6}>
+        <Flex flexDirection="column" gap={2}>
           <label htmlFor="name" style={{ 
             fontSize: '16px', 
             fontWeight: '500',
             color: '#24292f'
           }}>
-            👤 Name *
+            👤 Name / Nickname *
           </label>
           <TextInput
             id="name"
@@ -136,7 +134,7 @@ export const IntroPage: React.FC = () => {
           )}
         </Flex>
 
-        <Flex flexDirection="column" gap={6}>
+        <Flex flexDirection="column" gap={2}>
           <label htmlFor="email" style={{ 
             fontSize: '16px', 
             fontWeight: '500',
@@ -166,13 +164,22 @@ export const IntroPage: React.FC = () => {
               ⚠️ {errors.email}
             </Paragraph>
           )}
+          <Paragraph style={{ 
+            color: '#586069', 
+            fontSize: '14px', 
+            margin: 0,
+            fontStyle: 'italic',
+            textAlign: 'center'
+          }}>
+            To contact you about the prize. No spam. Scouts honor.
+          </Paragraph>
         </Flex>
 
         <Button
           onClick={handleStartQuiz}
           variant="emphasized"
           style={{ 
-            marginTop: '24px',
+            marginTop: '20px',
             height: '48px',
             fontSize: '18px',
             fontWeight: '600',
