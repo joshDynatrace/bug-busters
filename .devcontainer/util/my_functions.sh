@@ -68,3 +68,8 @@ deployDynatraceApp(){
   printInfo "Deploying the Dynatrace app to $DT_TENANT"
   npx dt-app deploy
 }
+
+setLiveDebuggerVersionControlEnv(){
+  printInfo "Settings Live Debugger Version Control Environment Variables."
+  bash app/patches/set_version_control.sh
+}
