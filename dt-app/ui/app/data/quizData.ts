@@ -34,7 +34,7 @@ export const quizQuestions: QuizQuestion[] = [
         text: "Try to use Live Debugger app.",
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=bugzappers'. The source code repository should populate automatically.",
-          "Set the breakpoint in server.js code, where clearing the scores is implemented.",
+          "Set the breakpoint in the server.js file under bugzapper/server.js, where clearing the scores is implemented.",
           "Try to 'CLEAR THE SCORES' in the app few more times.",
           "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
         ]
@@ -115,7 +115,7 @@ export const quizQuestions: QuizQuestion[] = [
       {
         text: "Use the Live Debugger to set a non-breaking breakpoint.",
         bullets: [
-          "Based on the error logs, set a breakpoint in the part of the code in 'server.js' that is responsible for storing the game stats when a game ends"
+          "Based on the error logs, set a breakpoint in the part of the code in server.js that is responsible for storing the game stats when a game ends"
         ]
       }
     ],
@@ -159,7 +159,7 @@ export const quizQuestions: QuizQuestion[] = [
         text: "Try to use the Live Debugger app.",
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
-          "Set the breakpoint in the function that is called when you clear TODOs.",
+          "Set the breakpoint in the function that is called when you clear TODOs in the TodoController.java file.",
           "Try to 'Clear the TODOS' in the app a few more times.",
           "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
         ]
