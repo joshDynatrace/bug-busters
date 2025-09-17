@@ -71,5 +71,6 @@ deployDynatraceApp(){
 
 setLiveDebuggerVersionControlEnv(){
   printInfo "Settings Live Debugger Version Control Environment Variables."
-  bash app/patches/set_version_control.sh
+  pwd
+  bash ../app/patches/set_version_control.sh
 }
