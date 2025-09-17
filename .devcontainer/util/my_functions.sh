@@ -34,6 +34,11 @@ deployBugZapperApp(){
   printInfoSection "Bugzapper is available via NodePort=30200"
 }
 
+setLiveDebuggerVersionControlEnv(){
+  printInfo "Settings Live Debugger Version Control Environment Variables."
+  bash ../app/patches/set_version_control.sh
+}
+
 deployDynatraceApp(){
   cd dt-app
 
@@ -61,16 +66,12 @@ deployDynatraceApp(){
   sed -i "s|{{BUGZAPPER_URL}}|${BUGZAPPER_URL}|g" ui/app/data/quizData.ts
   sed -i "s|{{TODO_URL}}|${TODO_URL}|g" ui/app/data/quizData.ts
 
-  printInfo "Installing dynatrace app dependencies."
+  printInfo "Installing Dynatrace quiz app dependencies."
   npm install
 
   # deploy dynatrace app - note this will fail if the version in app.config.json has already been deployed
   printInfo "Deploying the Dynatrace app to $DT_TENANT"
   npx dt-app deploy
-}
 
-setLiveDebuggerVersionControlEnv(){
-  printInfo "Settings Live Debugger Version Control Environment Variables."
-  pwd
-  bash ../app/patches/set_version_control.sh
+  cd ..
 }

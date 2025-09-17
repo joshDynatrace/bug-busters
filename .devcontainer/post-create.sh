@@ -17,9 +17,9 @@ deployTodoApp
 
 deployBugZapperApp
 
-deployDynatraceApp
-
 setLiveDebuggerVersionControlEnv
+
+deployDynatraceApp
 
 finalizePostCreation
 
