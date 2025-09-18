@@ -13,7 +13,7 @@ export const IntroPage: React.FC = () => {
   const [errors, setErrors] = useState({ name: '', email: '' });
   const navigate = useNavigate();
   const { setUserInfo } = useQuiz();
-  const { startTimer } = useTimer();
+  const { startTimer, resetTimer } = useTimer();
 
   const validateForm = () => {
     const newErrors = { name: '', email: '' };
@@ -39,6 +39,7 @@ export const IntroPage: React.FC = () => {
   const handleStartQuiz = () => {
     if (validateForm()) {
       setUserInfo(name, email);
+      resetTimer();
       startTimer();
       navigate('/quiz/1');
     }
