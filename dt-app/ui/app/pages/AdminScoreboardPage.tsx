@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Flex } from '@dynatrace/strato-components/layouts';
 import { Heading, Paragraph } from '@dynatrace/strato-components/typography';
 import { Button } from '@dynatrace/strato-components/buttons';
-import { Link } from 'react-router-dom';
 import { useUserAppStates } from '@dynatrace-sdk/react-hooks';
 
 interface UserResult {
   name: string;
+  email: string;
   score: number;
 }
 
-export const ScoreboardPage: React.FC = () => {
+export const AdminScoreboardPage: React.FC = () => {
   const [topScores, setTopScores] = useState<UserResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -39,6 +39,7 @@ export const ScoreboardPage: React.FC = () => {
               const resultData = JSON.parse(state.value);
               allResults.push({
                 name: resultData.name || 'Anonymous',
+                email: resultData.email || 'N/A',
                 score: resultData.score || 0
               });
             }
@@ -83,7 +84,7 @@ export const ScoreboardPage: React.FC = () => {
       padding={32} 
       gap={32} 
       style={{ 
-        maxWidth: '800px', 
+        maxWidth: '1200px', 
         margin: '0 auto',
         backgroundColor: '#ffffff',
         minHeight: 'calc(100vh - 200px)'
@@ -91,7 +92,7 @@ export const ScoreboardPage: React.FC = () => {
     >
       <Flex flexDirection="column" alignItems="center" gap={16}>
         <Heading level={1} style={{ color: '#0366d6', margin: 0 }}>
-          🏆 Top Scores
+          🔐 Admin Scoreboard
         </Heading>
         <Paragraph style={{ 
           fontSize: '18px', 
@@ -99,7 +100,7 @@ export const ScoreboardPage: React.FC = () => {
           color: '#24292f',
           margin: 0
         }}>
-          Bug Busters Quiz Leaderboard
+          Bug Busters Quiz Leaderboard (Admin View)
         </Paragraph>
       </Flex>
 
@@ -157,9 +158,14 @@ export const ScoreboardPage: React.FC = () => {
                 Rank
               </Paragraph>
             </Flex>
-            <Flex style={{ flex: 1 }}>
+            <Flex style={{ width: '200px' }}>
               <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
                 Name
+              </Paragraph>
+            </Flex>
+            <Flex style={{ flex: 1 }}>
+              <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
+                Email
               </Paragraph>
             </Flex>
             <Flex style={{ width: '150px', justifyContent: 'flex-end' }}>
@@ -177,7 +183,7 @@ export const ScoreboardPage: React.FC = () => {
           }}>
             {topScores.map((result, index) => (
               <Flex 
-                key={`${result.name}-${result.score}-${index}`}
+                key={`${result.name}-${result.email}-${result.score}-${index}`}
                 style={{
                   padding: '16px 24px',
                   backgroundColor: index % 2 === 0 ? '#ffffff' : '#f8f9fa',
@@ -194,7 +200,7 @@ export const ScoreboardPage: React.FC = () => {
                     {getRankDisplay(index)}
                   </Paragraph>
                 </Flex>
-                <Flex style={{ flex: 1 }} alignItems="center">
+                <Flex style={{ width: '200px' }} alignItems="center">
                   <Paragraph style={{ 
                     fontWeight: '500', 
                     color: '#24292f',
@@ -202,6 +208,15 @@ export const ScoreboardPage: React.FC = () => {
                     fontSize: '16px'
                   }}>
                     {result.name}
+                  </Paragraph>
+                </Flex>
+                <Flex style={{ flex: 1 }} alignItems="center">
+                  <Paragraph style={{ 
+                    color: '#586069',
+                    margin: 0,
+                    fontSize: '14px'
+                  }}>
+                    {result.email}
                   </Paragraph>
                 </Flex>
                 <Flex style={{ width: '150px', justifyContent: 'flex-end' }} alignItems="center">
@@ -247,24 +262,6 @@ export const ScoreboardPage: React.FC = () => {
           </Paragraph>
         </Flex>
       )}
-      
-      {/* Admin Link */}
-      <Flex justifyContent="center" style={{ marginTop: '32px' }}>
-        <Link 
-          to="/admin/scoreboard"
-          style={{
-            fontSize: '12px',
-            color: '#586069',
-            textDecoration: 'none',
-            opacity: 0.7,
-            transition: 'opacity 0.2s'
-          }}
-          onMouseEnter={(e) => (e.target as HTMLElement).style.opacity = '1'}
-          onMouseLeave={(e) => (e.target as HTMLElement).style.opacity = '0.7'}
-        >
-          🔐 Admin View
-        </Link>
-      </Flex>
     </Flex>
   );
 };

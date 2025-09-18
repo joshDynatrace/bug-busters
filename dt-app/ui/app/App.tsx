@@ -6,6 +6,7 @@ import { IntroPage } from "./pages/IntroPage";
 import { QuizPage } from "./pages/QuizPage";
 import { ResultsPage } from "./pages/ResultsPage";
 import { ScoreboardPage } from "./pages/ScoreboardPage";
+import { AdminScoreboardPage } from "./pages/AdminScoreboardPage";
 import { TimerProvider } from "./contexts/TimerContext";
 import { QuizProvider } from "./contexts/QuizContext";
 
@@ -23,6 +24,7 @@ export const App = () => {
               <Route path="/quiz/:questionId" element={<QuizPage />} />
               <Route path="/results" element={<ResultsPage />} />
               <Route path="/scoreboard" element={<ScoreboardPage />} />
+              <Route path="/admin/scoreboard" element={<AdminScoreboardPage />} />
             </Routes>
           </Page.Main>
         </Page>
