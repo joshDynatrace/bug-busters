@@ -65,6 +65,7 @@ deployDynatraceApp(){
   # Replace placeholders in quizData.ts to embed links in the Dynatrace app
   sed -i "s|{{BUGZAPPER_URL}}|${BUGZAPPER_URL}|g" ui/app/data/quizData.ts
   sed -i "s|{{TODO_URL}}|${TODO_URL}|g" ui/app/data/quizData.ts
+  sed -i "s|{{ENVIRONMENTID}}|${DT_HOST}|g" ui/app/data/quizData.ts
 
   printInfo "Installing Dynatrace quiz app dependencies."
   npm install

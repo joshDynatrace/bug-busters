@@ -14,8 +14,14 @@ export interface QuizQuestion {
   }[];
 }
 
+// BUGZAPPER_URL and TODO_URL will be replaced with actual URLs at runtime
+
 export const QUIZ_TIMER_INITIAL = 1800; // 30 minutes in seconds
 export const POINTS_PER_CORRECT_ANSWER = 100;
+
+export const DISTRIBUTED_TRACING_URL = "https://{{ENVIRONMENT_ID}}.apps.dynatrace.com/ui/apps/dynatrace.distributedtracing";
+export const LIVE_DEBUGGER_URL = "https://{{ENVIRONMENT_ID}}.apps.dynatrace.com/ui/apps/dynatrace.devobs.debugger";
+export const SERVICES_URL = "https://{{ENVIRONMENT_ID}}.apps.dynatrace.com/ui/apps/dynatrace.services";
 
 export const quizQuestions: QuizQuestion[] = [
   {
@@ -24,14 +30,14 @@ export const quizQuestions: QuizQuestion[] = [
     bugDescription: "There are a few bugs in the Bugzapper app and your mission is to find them by interacting with the application and using Dynatrace to help your investigation. <br/><br/> 🎮 Let's play <a href='{{BUGZAPPER_URL}}' target='_blank'>Bugzappers</a>! <br/><br/>Open the Bugzappers app. Play it once. <strong>Click Submit Your Score</strong>.<br/><br/>Try to <strong>Clear the scores</strong>. Now let's troubleshoot!",
     hints: [
       {
-        text: "Try to use Distributed Tracing app to understand which API calls are being made.",
+        text: "Try to use <a href='{{DISTRIBUTED_TRACING_URL}}' target='_blank'>Distributed Tracing app</a> to understand which API calls are being made.",
         bullets: [
           "Filter on 'Service=asteroids-game'",
           "Which API calls are made?"
         ]
       },
       {
-        text: "Try to use Live Debugger app.",
+        text: "Try to use <a href='{{LIVE_DEBUGGER_URL}}' target='_blank'>Live Debugger app</a>.",
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=bugzappers'. The source code repository should populate automatically.",
           "Set the breakpoint in the server.js file under bugzapper/server.js, where clearing the scores is implemented.",
@@ -70,7 +76,7 @@ export const quizQuestions: QuizQuestion[] = [
     bugDescription: "Now that you've played a game, you can view your game stats by clicking on the <strong>View Game Stats</strong> button.<br/><br/>Click on <strong>Past Game Stats</strong> to view the past game stats.<br/><br/>Notice the accurary is showing as null. Why is that happening?",
     hints: [
       {
-        text: "Go to the Asteroids Game service in the Services app and check out the Logs.",
+        text: "Go to the Asteroids Game service in the <a href='{{SERVICES_URL}}' target='_blank'>Services app</a> and check out the Logs.",
         bullets: [
           "Look for errors in the logs",
           "Press 'Ctrl/Cmd + K' in Dynatrace and type 'Services' to find the app"
@@ -107,13 +113,13 @@ export const quizQuestions: QuizQuestion[] = [
     bugDescription: "Now that we know an exception was being thrown let's find out why the past game stats were null and where in the code this was happening.",
     hints: [
       {
-        text: "Try to use Distributed Tracing app to understand which API calls are being made when you click Past Game Stats.",
+        text: "Try to use <a href='{{DISTRIBUTED_TRACING_URL}}' target='_blank'>Distributed Tracing app</a> to understand which API calls are being made when you click Past Game Stats.",
         bullets: [
           "Filter on 'Service=asteroids-game'"
         ]
       },
       {
-        text: "Use the Live Debugger to set a non-breaking breakpoint.",
+        text: "Use the <a href='{{LIVE_DEBUGGER_URL}}' target='_blank'>Live Debugger</a> to set a non-breaking breakpoint.",
         bullets: [
           "Based on the error logs, set a breakpoint in the part of the code in server.js that is responsible for storing the game stats when a game ends"
         ]
@@ -149,14 +155,14 @@ export const quizQuestions: QuizQuestion[] = [
     bugDescription: "Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the TODO App. There are a few bugs in the app that we'll need to investigate.<br/><br/>✅ Open the <a href='{{TODO_URL}}' target='_blank'>TODO app</a>.<br/><br/>Add a few tasks (hit enter to add).<br/>Complete some of them by clicking to the left of the task.<br/>Clear the completed tasks. What happens?<br/>Why are the TODO tasks not being cleared?",
     hints: [
       {
-        text: "Open up the distributed traces app to find out which API calls are being made to the backend.",
+        text: "Open up the <a href='{{DISTRIBUTED_TRACING_URL}}' target='_blank'>Distributed Tracing app</a> to find out which API calls are being made to the backend.",
         bullets: [
           "Filter on 'Kubernetes Namespace=todoapp'",
           "Which API calls are made?"
         ]
       },
       {
-        text: "Try to use the Live Debugger app.",
+        text: "Try to use the <a href='{{LIVE_DEBUGGER_URL}}' target='_blank'>Live Debugger app</a>.",
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
           "Set the breakpoint in the function that is called when you clear TODOs in the TodoController.java file.",
@@ -195,14 +201,14 @@ export const quizQuestions: QuizQuestion[] = [
     bugDescription: "Let's add a todo task with some special characters such as exclamation points.<br/><br/>What do you notice? Where is the bug?",
     hints: [
       {
-        text: "Open up the distributed traces app to find out which API calls are being made to the backend.",
+        text: "Open up the <a href='{{DISTRIBUTED_TRACING_URL}}' target='_blank'>Distributed Tracing app</a> to find out which API calls are being made to the backend.",
         bullets: [
           "Filter on 'Kubernetes Namespace=todoapp'",
           "Which API calls are made?"
         ]
       },
       {
-        text: "Try to use the Live Debugger app.",
+        text: "Try to use the <a href='{{LIVE_DEBUGGER_URL}}' target='_blank'>Live Debugger app</a>.",
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
           "Set the breakpoint in the function that is called when you clear TODOs.",

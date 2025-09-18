@@ -117,7 +117,7 @@ export const QuizPage: React.FC = () => {
                   fontWeight: '500',
                   marginBottom: '8px'
                 }}>
-                  {hint.text}
+                  <span dangerouslySetInnerHTML={{ __html: hint.text }} />
                 </Paragraph>
                 <ul style={{ 
                   margin: 0, 
