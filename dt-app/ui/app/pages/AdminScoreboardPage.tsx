@@ -8,6 +8,7 @@ interface UserResult {
   name: string;
   email: string;
   score: number;
+  timeRemaining: number;
 }
 
 export const AdminScoreboardPage: React.FC = () => {
@@ -40,7 +41,8 @@ export const AdminScoreboardPage: React.FC = () => {
               allResults.push({
                 name: resultData.name || 'Anonymous',
                 email: resultData.email || 'N/A',
-                score: resultData.score || 0
+                score: resultData.score || 0,
+                timeRemaining: resultData.timeRemaining || 0
               });
             }
           } catch (error) {
@@ -76,6 +78,12 @@ export const AdminScoreboardPage: React.FC = () => {
     if (index === 1) return '#C0C0C0';
     if (index === 2) return '#CD7F32';
     return '#24292f';
+  };
+
+  const formatTimeRemaining = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -153,22 +161,27 @@ export const AdminScoreboardPage: React.FC = () => {
             border: '1px solid #e1e4e8',
             borderBottom: 'none'
           }}>
-            <Flex style={{ width: '100px' }}>
+            <Flex style={{ width: '80px' }}>
               <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
                 Rank
               </Paragraph>
             </Flex>
-            <Flex style={{ width: '200px' }}>
+            <Flex style={{ width: '180px' }}>
               <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
                 Name
               </Paragraph>
             </Flex>
-            <Flex style={{ flex: 1 }}>
+            <Flex style={{ width: '220px' }}>
               <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
                 Email
               </Paragraph>
             </Flex>
-            <Flex style={{ width: '150px', justifyContent: 'flex-end' }}>
+            <Flex style={{ width: '120px' }}>
+              <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
+                Time Left
+              </Paragraph>
+            </Flex>
+            <Flex style={{ width: '120px', justifyContent: 'flex-end' }}>
               <Paragraph style={{ fontWeight: 'bold', color: '#24292f', margin: 0 }}>
                 Score
               </Paragraph>
@@ -190,7 +203,7 @@ export const AdminScoreboardPage: React.FC = () => {
                   borderBottom: index < topScores.length - 1 ? '1px solid #e1e4e8' : 'none'
                 }}
               >
-                <Flex style={{ width: '100px' }} alignItems="center">
+                <Flex style={{ width: '80px' }} alignItems="center">
                   <Paragraph style={{ 
                     fontWeight: 'bold',
                     color: getRankColor(index),
@@ -200,7 +213,7 @@ export const AdminScoreboardPage: React.FC = () => {
                     {getRankDisplay(index)}
                   </Paragraph>
                 </Flex>
-                <Flex style={{ width: '200px' }} alignItems="center">
+                <Flex style={{ width: '180px' }} alignItems="center">
                   <Paragraph style={{ 
                     fontWeight: '500', 
                     color: '#24292f',
@@ -210,7 +223,7 @@ export const AdminScoreboardPage: React.FC = () => {
                     {result.name}
                   </Paragraph>
                 </Flex>
-                <Flex style={{ flex: 1 }} alignItems="center">
+                <Flex style={{ width: '220px' }} alignItems="center">
                   <Paragraph style={{ 
                     color: '#586069',
                     margin: 0,
@@ -219,7 +232,17 @@ export const AdminScoreboardPage: React.FC = () => {
                     {result.email}
                   </Paragraph>
                 </Flex>
-                <Flex style={{ width: '150px', justifyContent: 'flex-end' }} alignItems="center">
+                <Flex style={{ width: '120px' }} alignItems="center">
+                  <Paragraph style={{ 
+                    color: '#0366d6',
+                    margin: 0,
+                    fontSize: '14px',
+                    fontWeight: '500'
+                  }}>
+                    {formatTimeRemaining(result.timeRemaining)}
+                  </Paragraph>
+                </Flex>
+                <Flex style={{ width: '120px', justifyContent: 'flex-end' }} alignItems="center">
                   <Paragraph style={{ 
                     fontWeight: 'bold', 
                     color: '#155724',

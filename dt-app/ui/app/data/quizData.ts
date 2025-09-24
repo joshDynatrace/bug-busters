@@ -27,7 +27,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
     bugHeading: "Why are the top scores not being cleared?",
-    bugDescription: "There are a few bugs in the Bugzapper app and your mission is to find them by interacting with the application and using Dynatrace to help your investigation. <br/><br/> 🎮 Let's play <a href='{{BUGZAPPER_URL}}' target='_blank'>Bugzappers</a>! <br/><br/>Open the Bugzappers app. Play it once. <strong>Click Submit Your Score</strong>.<br/><br/>Try to <strong>Clear the scores</strong>. Now let's troubleshoot!",
+    bugDescription: "There are a few bugs in the Bugzapper app and your mission is to find them by interacting with the application and using Dynatrace to help your investigation. <br/><br/> 🎮 Let's play Bugzappers! <br/><br/>Open the Bugzappers app. Play it once. <strong>Click Submit Your Score</strong>.<br/><br/>Try to <strong>Clear the scores</strong>. Now let's troubleshoot!",
     hints: [
       {
         text: `Try to use <a href='${DISTRIBUTED_TRACING_URL}' target='_blank'>Distributed Tracing app</a> to understand which API calls are being made.`,
@@ -152,7 +152,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: 4,
     bugHeading: "TODO App: Clear Completed Tasks",
-    bugDescription: "Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the TODO App. There are a few bugs in the app that we'll need to investigate.<br/><br/>✅ Open the <a href='{{TODO_URL}}' target='_blank'>TODO app</a>.<br/><br/>Add a few tasks (hit enter to add).<br/>Complete some of them by clicking to the left of the task.<br/>Clear the completed tasks. What happens?<br/>Why are the TODO tasks not being cleared?",
+    bugDescription: "Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the TODO App. There are a few bugs in the app that we'll need to investigate.<br/><br/>✅ Open the TODO app.<br/><br/>Add a few tasks (hit enter to add).<br/>Complete some of them by clicking to the left of the task.<br/>Clear the completed tasks. What happens?<br/>Why are the TODO tasks not being cleared?",
     hints: [
       {
         text: `Open up the <a href='${DISTRIBUTED_TRACING_URL}' target='_blank'>Distributed Tracing app</a> to find out which API calls are being made to the backend.`,
@@ -175,7 +175,7 @@ export const quizQuestions: QuizQuestion[] = [
     answers: [
       {
         id: "a",
-        text: "The Todo task are not actually being saved on the server",
+        text: "The Todo tasks are not actually being saved on the server",
         isCorrect: false
       },
       {
