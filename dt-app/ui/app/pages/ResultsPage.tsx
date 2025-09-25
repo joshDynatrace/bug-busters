@@ -36,7 +36,7 @@ export const ResultsPage: React.FC = () => {
         version: '1',
         name: userName,
         email: userEmail,
-        score: finalScore,
+        score: multipliedCorrectPoints,
         correctAnswers,
         incorrectAnswers,
         totalQuestions: quizQuestions.length,
@@ -109,7 +109,7 @@ export const ResultsPage: React.FC = () => {
             color: '#155724',
             margin: 0
           }}>
-            {finalScore} points
+            {multipliedCorrectPoints} points
           </Paragraph>
           <Paragraph style={{ 
             color: '#155724',

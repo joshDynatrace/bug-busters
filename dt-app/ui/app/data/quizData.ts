@@ -211,7 +211,7 @@ export const quizQuestions: QuizQuestion[] = [
         text: `Try to use the <a href='${LIVE_DEBUGGER_URL}' target='_blank'>Live Debugger app</a>.`,
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
-          "Set the breakpoint in the function that is called when you clear TODOs.",
+          "Set the breakpoint in the function that is called when you add TODOs.",
           "Try to 'Clear the TODOS' in the app a few more times.",
           "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
         ]
