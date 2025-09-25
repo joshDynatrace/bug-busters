@@ -166,6 +166,7 @@ export const quizQuestions: QuizQuestion[] = [
         bullets: [
           "Click the purple pencil icon to set a filter - 'namespace=todoapp'. The source code repository should populate automatically.",
           "Set the breakpoint in the function that is called when you clear TODOs in the TodoController.java file.",
+          "Use the magnifying glass icon to search for a file in your source code repository.",
           "Try to 'Clear the TODOS' in the app a few more times.",
           "Wait for data to show up in the Live Debugger screen. Troubleshoot!"
         ]
