@@ -55,7 +55,6 @@ app.post('/api/scores', (req, res) => {
 
 // Clear all scores
 app.get('/api/clearScores', (req, res) => {
-  console.log('Scores before clearing:', scores);
   let scores = [];
   console.log('All scores cleared successfully');
   res.json({ message: 'All scores cleared successfully' });
