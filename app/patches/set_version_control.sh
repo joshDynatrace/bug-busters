@@ -15,7 +15,7 @@ DT_LIVEDEBUGGER_REMOTE_ORIGIN=""
 
 set_version_control_information(){
     DT_LIVEDEBUGGER_REMOTE_ORIGIN=$(git remote get-url origin)
-    DT_LIVEDEBUGGER_COMMIT=$(git rev-parse $version)
+    DT_LIVEDEBUGGER_COMMIT=$(git rev-parse HEAD)
 
     echo "Fetching git revision for $version in $DT_LIVEDEBUGGER_REMOTE_ORIGIN" 
     echo $DT_LIVEDEBUGGER_COMMIT

@@ -16,20 +16,45 @@ Your mission in this bug finding expedition is to find bugs in the following two
 - BugZapper Asteroids Style Game (Node.js application)
 - To-Do App (Java application)
 
-As part of the journey, you'll utilize Dynatraces Live Debugger and other capabilities to find where the bugs are occuring in the codebase.
+As part of the journey, you'll utilize Dynatraces Live Debugger, Logs, and Traces to find where the bugs are occuring in the codebase.
 
-Dynatrace's Observability for Developers allows you to:
-
-- Debug running applications in any environment
-- Gain instant insights into debug level data to diagnose problems
-- Get full visibility into code and code execution
-- Instantly debug complex workflows
+When deploying the components inside this repository a Dynatrace App will also be deployed. This app is a quiz app which will ask you a set of multiple choice questions which you need to answer in the shortest time possible to achieve the highest score.
 
 <p align="center">
     <img src="docs/img/bug-busters.jpg" alt="Bug Busters" width="500"/>
 </p>
 
-If you're ready to get started finding some bugs, click the link below to move forward...
+## Quickstart
+
+Here are some short quickstart details to get going as you spin up the codespaces. More specific details are in the link at the bottom of the page.
+
+1) To spin up the environment with GitHub codespaces, go to Codespaces and then select 'New with options' or directly by [clicking here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true)
+
+You'll need:
+ - A Dynatrace tenant endpoint which should look something like 'https://abc12345.live.dynatrace.com' 
+    - Dynatrace Operator Token
+    - Dynatrace Ingest Access Token with the following permissions:
+        - metrics.ingest
+        - logs.ingest
+        - openTelemetryTrace.ingest
+    - The above tokens can be generated easily from the Kubernetes app by clicking on Add Cluster -> Other Distributions -> Install Dynatrace Operator Section
+    - An [OAuth Client](https://developer.dynatrace.com/develop/access-platform-apis-from-outside/#create-an-oauth-client) including the Client ID and Client Secret created from the Dynatrace Account settings to deploy the Dynatrace app. You'll need the following permissions:
+        - app-engine:apps:install
+        - app-engine:apps:run
+        - app-engine:apps:delete (to uninstall the app if needed)
+
+2) The codespace will automatically create a [Kind](https://kind.sigs.k8s.io/) Kubernetes cluster and deploy the BugZapper application and To-Do app. You can run
+
+   ```sh
+   kubectl get pods -n bugzapper
+   ```
+   ```sh
+   kubectl get pods -n todoapp
+   ```
+   To see that the pods have spun up successfully. The Dynatrace One Agent should also be available:
+   ```sh
+   kubectl get pods -n dynatrace
+   ```
 
 Let's Get Started...
 

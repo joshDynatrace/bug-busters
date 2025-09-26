@@ -17,6 +17,10 @@ deployTodoApp
 
 deployBugZapperApp 30200
 
+setLiveDebuggerVersionControlEnv
+
+deployDynatraceApp
+
 finalizePostCreation
 
 printInfoSection "Your dev container finished creating"
