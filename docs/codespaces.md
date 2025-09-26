@@ -1,6 +1,8 @@
 # Codespaces
 --8<-- "snippets/codespaces.js"
 
+--8<-- "snippets/dt-enablement.md"
+
 ## 1. Launch Codespace
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1028024094&skip_quickstart=true){target="_blank"}

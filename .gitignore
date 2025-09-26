@@ -170,6 +170,7 @@ site/*
 .devcontainer/.env*
 .devcontainer/runlocal/.env*
 
+# no logs
 logs
 *.log
 npm-debug.log*
@@ -178,6 +179,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node
 node_modules
 dist
 dist-ssr
@@ -194,5 +196,4 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
 .dt-app
