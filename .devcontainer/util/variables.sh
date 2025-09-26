@@ -133,10 +133,13 @@ LOGNAME="dynatrace.enablement"
 
 # LabGuidePort
 WEBAPPPORT=30100
+BUGZAPPERPORT=30200
 if [[ $CODESPACES == true ]]; then
   PRINT_USER=$GITHUB_USER
   WEBAPP_URL="https://${CODESPACE_NAME}-$WEBAPPPORT.app.github.dev"
+  BUGZAPPER_URL="https://${CODESPACE_NAME}-$BUGZAPPERPORT.app.github.dev"
 else
   PRINT_USER=$USER
   WEBAPP_URL="http://0.0.0.0:$WEBAPPPORT"
+  BUGZAPPER_URL="http://0.0.0.0:$BUGZAPPERPORT"
 fi

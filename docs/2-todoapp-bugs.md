@@ -1,6 +1,6 @@
 --8<-- "snippets/3-codespaces.js"
 
-## Bug 1: Todo App - Clear Completed
+## Bug 1: Todo App - Clear completed tasks
 
 Now that you're an expert bug finder from finding bugs in the Bugzapper game, let's look at another app - the Todo App. There are a few bugs in the app that we'll need to investigate.
 
@@ -20,7 +20,7 @@ What happens?
 - Why are the Todo tasks not getting cleared after looking at the code?
 
 
-## Bug 2: Todo App - Clear Completed
+## Bug 2: Todo App - Special characters disappearing
 
 Let's add a todo task with some special characters such as exclamation points.
 
