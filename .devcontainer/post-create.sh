@@ -15,7 +15,7 @@ deployCloudNative
 
 deployTodoApp
 
-deployBugZapperApp
+deployBugZapperApp 30200
 
 setLiveDebuggerVersionControlEnv
 

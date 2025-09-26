@@ -739,17 +739,18 @@ generateDynakube(){
     CLUSTERNAME=$(hostname)
     export CLUSTERNAME
 
+    arch=$(uname -m)
     ARM=false
 
-    if [[ "$ARCH" == "x86_64" ]]; then
+    if [[ "$arch" == "x86_64" ]]; then
       printInfo "Codespace is running in AMD (x86_64), Dynakube image is set as default to pull the latest from the tenant $DT_TENANT"
-    elif [[ "$ARCH" == *"arm"* || "$ARCH" == *"aarch64"* ]]; then
-      printWarn "Codespace is running in ARM architecture ($ARCH), Dynakube image will be set in Dynakube for AG and OneAgent."
-      printWarn "ActiveGate image: $AG_IMAGE"
-      printWarn "OneAgent image: $OA_IMAGE"
+    elif [[ "$arch" == *"arm"* || "$arch" == *"aarch64"* ]]; then
+      printInfo "Codespace is running in ARM architecture ($arch), Dynakube image will be set in Dynakube for AG and OneAgent."
+      printInfo "ActiveGate image: $AG_IMAGE"
+      printInfo "OneAgent image: $OA_IMAGE"
       ARM=true
     else
-      printInfo "Codespace is running on an unkown architecture ($ARCH), Dynakube image will be set in Dynakube for AG and OneAgent."
+      printInfo "Codespace is running on an unkown architecture ($arch), Dynakube image will be set in Dynakube for AG and OneAgent."
       printInfo "ActiveGate image: $AG_IMAGE"
       printInfo "OneAgent image: $OA_IMAGE"
       ARM=true
@@ -1260,6 +1261,34 @@ showDeployAppUsage(){
   printInfo "----------------------------------------------------------------------------"
 }
 
+deployBugZapperApp(){
+
+  if [[ $# -eq 1 ]]; then
+    PORT="$1"
+  else
+    PORT="30100"
+  fi
+
+  printInfoSection "Deploying BugZapper App on Port $PORT"
+
+  kubectl create ns bugzapper
+
+  # Create deployment of todoApp
+  kubectl -n bugzapper create deploy bugzapper --image=jhendrick/bugzapper-game:latest
+
+  # Expose deployment of todoApp with a Service
+  kubectl -n bugzapper expose deployment bugzapper --type=NodePort --name=bugzapper --port=3000 --target-port=3000
+
+  # Define the NodePort to expose the app from the Cluster
+  kubectl patch service bugzapper --namespace=bugzapper --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
+
+  waitForAllReadyPods bugzapper
+
+  waitAppCanHandleRequests $PORT
+
+  printInfoSection "Bugzapper is available via NodePort=$PORT"
+}
+
 deleteCodespace(){
   printWarn "Warning! Codespace $CODESPACE_NAME will be deleted, the connection will be lost in a sec... " 
   gh codespace delete --codespace "$CODESPACE_NAME" --force
@@ -1338,7 +1367,6 @@ updateEnvVariable(){
     #printInfo "ZSH"
     #printInfo "update [$variable:${(P)variable}]"
     # indirect variable expansion in ZSH
-    # shellcheck disable=SC2296
     sed "s|^$variable=.*|$variable=${(P)variable}|" $ENV_FILE > $ENV_FILE.tmp
     mv $ENV_FILE.tmp $ENV_FILE
   else
